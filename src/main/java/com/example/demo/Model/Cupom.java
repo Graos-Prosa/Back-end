@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "cupom_table")
+@Table(name = "cupom")
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "id_cupom")

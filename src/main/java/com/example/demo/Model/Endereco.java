@@ -6,7 +6,7 @@ import lombok.*;
 import java.math.BigInteger;
 
 @Entity
-@Table(name = "endereco_table")
+@Table(name = "endereco")
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "id_endereco")

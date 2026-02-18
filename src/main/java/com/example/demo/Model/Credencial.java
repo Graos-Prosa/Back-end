@@ -1,19 +1,23 @@
 package com.example.demo.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "credencial_table")
+@Table(name = "credencial")
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "id_credencial")
 
 public class Credencial {
-    private BigInteger id_credencial
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter private BigInteger id_credencial;
+    @Getter @Setter private BigInteger id_usuario;
+    @Getter @Setter private String email;
+    @Getter @Setter private String senha;
+    @Getter @Setter private LocalDateTime criado_em;
 }
