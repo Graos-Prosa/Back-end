@@ -10,14 +10,20 @@ import java.time.LocalDateTime;
 @Table(name = "credencial")
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "id_credencial")
+@Getter @Setter
+@ToString(exclude = "idCredencial")
 
 public class Credencial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter private BigInteger id_credencial;
-    @Getter @Setter private BigInteger id_usuario;
-    @Getter @Setter private String email;
-    @Getter @Setter private String senha;
-    @Getter @Setter private LocalDateTime criado_em;
+    @Column(name = "id_credencial", nullable = false)
+    private BigInteger idCredencial;
+    @Column(name = "id_usuario", nullable = false)
+    private BigInteger idUsuario;
+    @Column(name = "email", nullable = false, length = 80)
+    private String email;
+    @Column(name = "senha", nullable = false, length = 100)
+    private String senha;
+    @Column(name = "criado_em", nullable = false)
+    private LocalDateTime criado_em;
 }

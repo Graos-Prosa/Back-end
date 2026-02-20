@@ -18,22 +18,22 @@ public class Endereco {
     @Getter private BigInteger idEndereco;
     @Column(name = "id_usuario", nullable = false)
     private BigInteger idUsuario;
-    @Column(name = "logradouro", nullable = false)
+    @Column(name = "logradouro", nullable = false , length = 150)
     private String logradouro;
     @Column(name = "numero", nullable = false)
     private Integer numero;
-    @Column(name = "complemento", nullable = false , length = )
+    @Column(name = "complemento", nullable = false , length = 100)
     private String complemento;
-    @Column(name = "referencia", nullable = false)
+    @Column(name = "referencia", nullable = false , length = 100)
     private String referencia;
-    @Column(name = "bairro", nullable = false)
+    @Column(name = "bairro", nullable = false , length = 100)
     private String bairro;
-    @Column(name = "cep", nullable = false)
+    @Column(name = "cep", nullable = false , length = 9)
     private String cep;
-    @Column(name = "cidade", nullable = false)
+    @Column(name = "cidade", nullable = false , length = 50)
     private String cidade;
-    @Column(name = "estado", nullable = false)
+    @Column(name = "estado", nullable = false , length = 50)
     private String estado;
-    @Column(name = "pais", nullable = false)
+    @Column(name = "pais", nullable = false , length = 50)
     private String pais;
 }
