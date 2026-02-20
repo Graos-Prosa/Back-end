@@ -10,16 +10,21 @@ import java.math.BigInteger;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter @Setter
-@ToString(exclude = "id_produto")
+@ToString(exclude = "idProduto")
 
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter private BigInteger id_produto;
-    @Column(name = "titulo")
+    @Column(name = "id_produto", nullable = false , length = 100)
+    @Getter private BigInteger idProduto;
+    @Column(name = "titulo", nullable = false , length = 100)
     private String titulo;
+    @Column(name = "descricao", nullable = false , length = 512)
     private String descricao;
+    @Column(name = "tipo", nullable = false , length = 50)
     private String tipo;
+    @Column(name = "preco", nullable = false , precision = 10 , scale = 2)
     private BigDecimal preco;
+    @Column(name = "quantidade", nullable = false)
     private Integer quantidade;
 }

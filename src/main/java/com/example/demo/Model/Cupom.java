@@ -10,14 +10,20 @@ import java.math.BigInteger;
 @Table(name = "cupom")
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "id_cupom")
+@Getter @Setter
+@ToString(exclude = "idCupom")
 
 public class Cupom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter private BigInteger id_cupom;
-    @Getter @Setter private String codigo;
-    @Getter @Setter private BigDecimal valor;
-    @Getter @Setter private String tipo;
-    @Getter @Setter private enumCupom estado;
+    @Column(name = "id_cupom", nullable = false)
+    @Getter private BigInteger idCupom;
+    @Column(name = "codigo", nullable = false , length = 50)
+    private String codigo;
+    @Column(name = "valor", nullable = false , precision = 10 , scale = 2)
+    private BigDecimal valor;
+    @Column(name = "tipo", nullable = false , length = 50)
+    private String tipo;
+    @Column(name = "estado", nullable = false , length = 50)
+    private enumCupom estado;
 }
