@@ -9,14 +9,17 @@ import java.math.BigInteger;
 @Table(name = "produto")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter @Setter
 @ToString(exclude = "id_produto")
 
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter private BigInteger id_produto;
-    @Getter @Setter String titulo;
-    @Getter @Setter private String descricao;
-    @Getter @Setter private BigDecimal preco;
-    @Getter @Setter private Integer quantidade;
+    @Column(name = "titulo")
+    private String titulo;
+    private String descricao;
+    private String tipo;
+    private BigDecimal preco;
+    private Integer quantidade;
 }
