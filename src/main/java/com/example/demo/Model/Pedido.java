@@ -19,10 +19,12 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pedido", nullable = false)
     @Getter private BigInteger idPedido;
-    @Column(name = "id_usuario", nullable = false)
-    private BigInteger idUsuario;
-    @Column(name = "id_cupom", nullable = true)
-    private BigInteger idCupom;
+    @ManyToOne
+    @JoinColumn(name = "id_usuario" , nullable = false)
+    private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "id_cupom" , nullable = true)
+    private Cupom cupom;
     @Column(name = "estado", nullable = false , length = 50)
     private String estado;
     @Column(name = "desconto", nullable = true , precision = 10 , scale = 2)

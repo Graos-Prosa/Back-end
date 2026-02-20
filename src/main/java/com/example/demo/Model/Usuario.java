@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_produto", nullable = false)
+    @Column(name = "id_usuario", nullable = false)
     @Getter private BigInteger idUsuario;
     @Column(name = "nome", nullable = false , length = 100)
     private String nome;

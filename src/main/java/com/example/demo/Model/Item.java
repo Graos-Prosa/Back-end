@@ -18,10 +18,12 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_item", nullable = false)
     @Getter private BigInteger idItem;
-    @Column(name = "id_produto", nullable = false)
-    private BigInteger idProduto;
-    @Column(name = "id_pedido", nullable = false)
-    private BigInteger idPedido;
+    @OneToOne
+    @JoinColumn(name = "id_produto")
+    private Produto produto;
+    @ManyToOne
+    @JoinColumn(name = "id_pedido")
+    private Pedido pedido;
     @Column(name = "quantidade", nullable = false)
     private Integer quantidade;
     @Column(name = "subtotal", nullable = false , precision = 10 , scale = 2)
