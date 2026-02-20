@@ -18,8 +18,9 @@ public class Credencial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_credencial", nullable = false)
     private BigInteger idCredencial;
-    @Column(name = "id_usuario", nullable = false)
-    private BigInteger idUsuario;
+    @OneToOne
+    @JoinColumn(name = "id_usuario")
+    private Usuario usuario;
     @Column(name = "email", nullable = false, length = 80)
     private String email;
     @Column(name = "senha", nullable = false, length = 100)
