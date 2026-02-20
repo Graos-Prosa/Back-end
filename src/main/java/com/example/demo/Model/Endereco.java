@@ -2,27 +2,38 @@ package com.example.demo.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.math.BigInteger;
 
 @Entity
 @Table(name = "endereco")
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "id_endereco")
+@Getter @Setter
+@ToString(exclude = "idEndereco")
 
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter private BigInteger id_endereco;
-    @Getter @Setter private BigInteger id_usuario;
-    @Getter @Setter private String logradouro;
-    @Getter @Setter private Integer numero;
-    @Getter @Setter private String complemento;
-    @Getter @Setter private String referencia;
-    @Getter @Setter private String bairro;
-    @Getter @Setter private String cep;
-    @Getter @Setter private String cidade;
-    @Getter @Setter private String estado;
-    @Getter @Setter private String pais;
+    @Column(name = "id_endereco", nullable = false)
+    @Getter private BigInteger idEndereco;
+    @Column(name = "id_usuario", nullable = false)
+    private BigInteger idUsuario;
+    @Column(name = "logradouro", nullable = false)
+    private String logradouro;
+    @Column(name = "numero", nullable = false)
+    private Integer numero;
+    @Column(name = "complemento", nullable = false , length = )
+    private String complemento;
+    @Column(name = "referencia", nullable = false)
+    private String referencia;
+    @Column(name = "bairro", nullable = false)
+    private String bairro;
+    @Column(name = "cep", nullable = false)
+    private String cep;
+    @Column(name = "cidade", nullable = false)
+    private String cidade;
+    @Column(name = "estado", nullable = false)
+    private String estado;
+    @Column(name = "pais", nullable = false)
+    private String pais;
 }

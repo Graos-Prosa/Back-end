@@ -12,16 +12,23 @@ import java.time.LocalDateTime;
 @Table(name = "usuario")
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "id_usuario")
+@Getter @Setter
+@ToString(exclude = "idUsuario")
 
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter private BigInteger id_usuario;
-    @Getter @Setter private String nome;
-    @Getter @Setter private String sobrenome;
-    @Getter @Setter private String telefone;
+    @Column(name = "id_produto", nullable = false)
+    @Getter private BigInteger idUsuario;
+    @Column(name = "nome", nullable = false , length = 100)
+    private String nome;
+    @Column(name = "sobrenome", nullable = false , length = 100)
+    private String sobrenome;
+    @Column(name = "telefone", nullable = false , length = 20)
+    private String telefone;
     @JsonFormat(pattern = "yyyy-MM-dd")
-    @Getter @Setter private LocalDate aniversario;
-    @Getter @Setter private LocalDateTime deletado_em;
+    @Column(name = "aniversario", nullable = true)
+    private LocalDate aniversario;
+    @Column(name = "deletado_em", nullable = true)
+    private LocalDateTime deletado_em;
 }

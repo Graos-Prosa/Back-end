@@ -11,17 +11,26 @@ import java.time.LocalDateTime;
 @Table(name = "pedido")
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = "id_pedido")
+@Getter @Setter
+@ToString(exclude = "idPedido")
 
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter private BigInteger id_pedido;
-    @Getter @Setter private BigInteger id_usuario;
-    @Getter @Setter BigInteger id_cupom;
-    @Getter @Setter private String estado;
-    @Getter @Setter private BigDecimal desconto;
-    @Getter @Setter private LocalDateTime data_pedido;
-    @Getter @Setter private BigDecimal valor_total;
-    @Getter @Setter private BigDecimal valor_final;
+    @Column(name = "id_pedido", nullable = false)
+    @Getter private BigInteger idPedido;
+    @Column(name = "id_usuario", nullable = false)
+    private BigInteger idUsuario;
+    @Column(name = "id_cupom", nullable = true)
+    private BigInteger idCupom;
+    @Column(name = "estado", nullable = false , length = 50)
+    private String estado;
+    @Column(name = "desconto", nullable = true , precision = 10 , scale = 2)
+    private BigDecimal desconto;
+    @Column(name = "data_pedido", nullable = false)
+    private LocalDateTime dataPedido;
+    @Column(name = "valor_total", nullable = true , precision = 10 , scale = 2)
+    private BigDecimal valorTotal;
+    @Column(name = "valor_final", nullable = false , precision = 10 , scale = 2)
+    private BigDecimal valorFinal;
 }
