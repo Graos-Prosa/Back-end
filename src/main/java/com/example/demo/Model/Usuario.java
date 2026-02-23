@@ -19,7 +19,9 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario", nullable = false)
-    @Getter private BigInteger idUsuario;
+    private BigInteger idUsuario;
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Endereco endereco;
     @Column(name = "nome", nullable = false , length = 100)
     private String nome;
     @Column(name = "sobrenome", nullable = false , length = 100)
