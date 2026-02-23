@@ -1,6 +1,8 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Model.Endereco;
 import com.example.demo.Model.Usuario;
+import com.example.demo.Service.EnderecoService;
 import com.example.demo.Service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +14,11 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
+    private final EnderecoService enderecoService;
 
-    public UsuarioController(UsuarioService usuarioService) {
+    public UsuarioController(UsuarioService usuarioService, EnderecoService enderecoService) {
         this.usuarioService = usuarioService;
+        this.enderecoService = enderecoService;
     }
 
     @GetMapping
@@ -27,8 +31,15 @@ public class UsuarioController {
         return usuarioService.save(usuario);
     }
 
+    //implementar autenticação de delete
     @DeleteMapping("/{id}")
     public void delete(@PathVariable BigInteger id) {
         usuarioService.delete(id);
+    }
+
+    //ENDEREÇO
+    @GetMapping("/usuarios/{id}/endereco")
+    public Endereco getEndereco(@PathVariable BigInteger id) {
+        return enderecoService.buscarPorUsuario(id);
     }
 }
