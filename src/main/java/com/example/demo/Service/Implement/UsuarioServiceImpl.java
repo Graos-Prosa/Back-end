@@ -32,6 +32,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    //implementar metodo de update
     @Override
     public Usuario update(BigInteger id, Usuario usuario) {
         return null;
