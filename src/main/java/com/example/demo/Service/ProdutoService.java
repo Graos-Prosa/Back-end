@@ -10,5 +10,5 @@ public interface ProdutoService {
     public List<Produto> getAll();
     public Produto save(Produto produto);
     public Produto update(BigInteger id, Produto produto);
-    public Void delete(BigInteger id);
+    public void delete(BigInteger id);
 }

@@ -3,7 +3,6 @@ package com.example.demo.Service.Implement;
 import com.example.demo.Model.Produto;
 import com.example.demo.Repository.ProdutoRepository;
 import com.example.demo.Service.ProdutoService;
-import com.example.demo.Service.UsuarioService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -19,17 +18,17 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     @Override
     public Produto getById(BigInteger id) {
-        return null;
+        return produtoRepository.getById(id);
     }
 
     @Override
     public List<Produto> getAll() {
-        return List.of();
+        return produtoRepository.findAll();
     }
 
     @Override
     public Produto save(Produto produto) {
-        return null;
+        return produtoRepository.save(produto);
     }
 
     @Override
@@ -38,7 +37,7 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
-    public Void delete(BigInteger id) {
-        return null;
+    public void delete(BigInteger id) {
+        produtoRepository.deleteById(id);
     }
 }

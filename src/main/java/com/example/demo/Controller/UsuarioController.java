@@ -20,6 +20,10 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
         this.enderecoService = enderecoService;
     }
+    @GetMapping("/{id}")
+    public Usuario getById(@PathVariable BigInteger id) {
+        return usuarioService.getById(id);
+    }
 
     @GetMapping
     public List<Usuario> getAll() {
@@ -30,6 +34,9 @@ public class UsuarioController {
     public Usuario create(@RequestBody Usuario usuario) {
         return usuarioService.save(usuario);
     }
+
+    @PutMapping("/{id}")
+    public Usuario update( @PathVariable BigInteger id, @RequestBody Usuario usuario) { return usuarioService.update(id, usuario);}
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
