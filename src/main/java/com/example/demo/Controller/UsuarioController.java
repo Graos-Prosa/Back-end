@@ -2,7 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Model.Endereco;
 import com.example.demo.Model.Usuario;
-import com.example.demo.Service.EnderecoService;
+import com.example.demo.Service.Implement.EnderecoServiceImpl;
 import com.example.demo.Service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +14,15 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-    private final EnderecoService enderecoService;
+    private final EnderecoServiceImpl enderecoService;
 
-    public UsuarioController(UsuarioService usuarioService, EnderecoService enderecoService) {
+    public UsuarioController(UsuarioService usuarioService, EnderecoServiceImpl enderecoService) {
         this.usuarioService = usuarioService;
         this.enderecoService = enderecoService;
+    }
+    @GetMapping("/{id}")
+    public Usuario getById(@PathVariable BigInteger id) {
+        return usuarioService.getById(id);
     }
 
     @GetMapping
@@ -30,6 +34,9 @@ public class UsuarioController {
     public Usuario create(@RequestBody Usuario usuario) {
         return usuarioService.save(usuario);
     }
+
+    @PutMapping("/{id}")
+    public Usuario update( @PathVariable BigInteger id, @RequestBody Usuario usuario) { return usuarioService.update(id, usuario);}
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
