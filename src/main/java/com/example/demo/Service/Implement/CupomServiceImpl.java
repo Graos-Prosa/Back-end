@@ -3,10 +3,12 @@ package com.example.demo.Service.Implement;
 import com.example.demo.Model.Cupom;
 import com.example.demo.Repository.CupomRepository;
 import com.example.demo.Service.CupomService;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
 
+@Service
 public class CupomServiceImpl implements CupomService {
 
     private final CupomRepository cupomRepository;

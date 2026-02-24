@@ -3,10 +3,12 @@ package com.example.demo.Service.Implement;
 import com.example.demo.Model.Item;
 import com.example.demo.Repository.ItemRepository;
 import com.example.demo.Service.ItemService;
+import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.List;
 
+@Service
 public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
