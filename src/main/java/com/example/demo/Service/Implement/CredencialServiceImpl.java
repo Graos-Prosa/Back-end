@@ -19,8 +19,11 @@ public class CredencialServiceImpl implements CredencialService {
 
     //Esses @Override em cima dos métodos é pra dizer olha, estou usando esse método que está na interface
 
+    // Uso findById porque getById pode retornar um proxy (objeto temporário
+    // que só carrega dados ao acessar seus atributos). findById é mais seguro.
+
     @Override
-    public Credencial FindById(Long id) {
+    public Credencial findById(Long id) {
         return credencialRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Credencial não encontrada."));
         //.orElseThrow() faz com que o método retorno um objeto invés de um Optional
@@ -43,8 +46,24 @@ public class CredencialServiceImpl implements CredencialService {
     }
 
     @Override
-    public Credencial updatePartial(Long id, Credencial credencial) {
-        Credencial existente = credencial;
+    public Credencial updatePartial(Long id, Credencial nova) {
+        Credencial existente = credencialRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Credencial não encontrada."));
+
+        if (nova.getEmail() != null) {
+            existente.setEmail(nova.getEmail());
+        }
+
+        if (nova.getUsuario() != null) {
+            existente.setUsuario(nova.getUsuario());
+        }
+
+        if (nova.getSenha() != null) {
+            existente.setSenha(nova.getSenha());
+        }
+
+        //melhor retornar o objeto ou null?
+        return credencialRepository.save(existente);
     }
 
     @Override

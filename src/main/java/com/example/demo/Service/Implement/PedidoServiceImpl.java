@@ -40,6 +40,30 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
+    public Pedido updatePartial(Long id, Pedido novo) {
+        Pedido existente = pedidoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado."));
+
+        if (novo.getEstado() != null) {
+            existente.setEstado(novo.getEstado());
+        }
+
+        if (novo.getDesconto() != null) {
+            existente.setDesconto(novo.getDesconto());
+        }
+
+        if (novo.getValorTotal() != null) {
+            existente.setValorTotal(novo.getValorTotal());
+        }
+
+        if (novo.getValorFinal() != null) {
+            existente.setValorFinal(novo.getValorFinal());
+        }
+
+        return pedidoRepository.save(existente);
+    }
+
+    @Override
     public void delete(Long id) {
         pedidoRepository.deleteById(id);
     }

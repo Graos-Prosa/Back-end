@@ -10,5 +10,6 @@ public interface UsuarioService {
     public List<Usuario> getAll();
     public Usuario save(Usuario usuario);
     public Usuario update(Long id, Usuario usuario);
+    public Usuario updatePartial(Long id, Usuario usuario);
     public void delete(Long id);
 }

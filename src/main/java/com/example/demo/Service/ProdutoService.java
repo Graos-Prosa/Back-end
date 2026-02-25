@@ -10,5 +10,6 @@ public interface ProdutoService {
     public List<Produto> getAll();
     public Produto save(Produto produto);
     public Produto update(Long id, Produto produto);
+    public Produto updatePartial(Long id, Produto produto);
     public void delete(Long id);
 }

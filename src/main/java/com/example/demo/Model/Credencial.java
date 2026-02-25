@@ -13,6 +13,9 @@ import java.time.LocalDateTime;
 @Getter @Setter
 @ToString(exclude = "idCredencial")
 
+// como eu usei findById, preciso rever nas entidades o conceito de:
+// @OneToOne(fetch = FetchType.LAZY) ou FetchType.EAGER
+
 public class Credencial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

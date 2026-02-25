@@ -9,6 +9,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/credencial")
 public class CredencialController {
+
+    // @RequestBody converte o JSON enviado na requisição em um objeto Java
+    // @PathVariable pega o valor que vem na URL (ex: /credenciais/5 → id = 5)
+
     private final CredencialService credencialService;
 
     public CredencialController(CredencialService credencialService) {
@@ -16,8 +20,8 @@ public class CredencialController {
     }
 
     @GetMapping("/{id}")
-    public Credencial getById(@PathVariable Long id) {
-        return credencialService.getById(id);
+    public Credencial findById(@PathVariable Long id) {
+        return credencialService.findById(id);
     }
 
     @GetMapping

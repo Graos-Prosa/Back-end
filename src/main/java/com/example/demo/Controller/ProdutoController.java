@@ -20,7 +20,7 @@ public class ProdutoController {
 
     @GetMapping("/{id}")
     public Produto getById(@PathVariable Long id) {
-        return produtoService.getById(id);
+        return produtoService.findById(id);
     }
 
     @GetMapping
@@ -35,6 +35,11 @@ public class ProdutoController {
 
     @PutMapping("/{id}")
     public Produto update( @PathVariable Long id, @RequestBody Produto produto) { return produtoService.update(id, produto);}
+
+    @PatchMapping("/{id}")
+    public Produto updatePartial(@PathVariable Long id, @RequestBody Produto produto) {
+        return produtoService.updatePartial(id, produto);
+    }
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")

@@ -1,5 +1,6 @@
 package com.example.demo.Service;
 
+import com.example.demo.Model.Endereco;
 import com.example.demo.Model.Item;
 
 import java.math.BigInteger;
@@ -10,5 +11,6 @@ public interface ItemService {
     public List<Item> getAll();
     public Item save(Item item);
     public Item update(Long id, Item item);
+    public Item updatePartial(Long id, Item item);
     public void delete(Long id);
 }

@@ -40,6 +40,50 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
+    public Endereco updatePartial(Long id, Endereco novo) {
+        Endereco existente = enderecoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Endereço não encontrado."));
+
+        if (novo.getLogradouro() != null) {
+            existente.setLogradouro(novo.getLogradouro());
+        }
+
+        if (novo.getNumero() != null) {
+            existente.setNumero(novo.getNumero());
+        }
+
+        if (novo.getComplemento() != null) {
+            existente.setComplemento(novo.getComplemento());
+        }
+
+        if (novo.getBairro() != null) {
+            existente.setBairro(novo.getBairro());
+        }
+
+        if (novo.getCidade() != null) {
+            existente.setCidade(novo.getCidade());
+        }
+
+        if (novo.getEstado() != null) {
+            existente.setEstado(novo.getEstado());
+        }
+
+        if (novo.getCep() != null) {
+            existente.setCep(novo.getCep());
+        }
+
+        if (novo.getReferencia() != null) {
+            existente.setReferencia(novo.getReferencia());
+        }
+
+        if (novo.getPais() != null) {
+            existente.setPais(novo.getPais());
+        }
+
+        return enderecoRepository.save(existente);
+    }
+
+    @Override
     public void delete(Long id) {
         enderecoRepository.deleteById(id);
     }

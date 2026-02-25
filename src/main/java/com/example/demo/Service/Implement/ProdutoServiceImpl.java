@@ -40,6 +40,38 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
+    public Produto updatePartial(Long id, Produto novo) {
+        Produto existente = produtoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado!"));
+
+        if (novo.getTitulo() != null) {
+            existente.setTitulo(novo.getTitulo());
+        }
+
+        if (novo.getDescricao() != null) {
+            existente.setDescricao(novo.getDescricao());
+        }
+
+        if (novo.getQuantidade() != null) {
+            existente.setQuantidade(novo.getQuantidade());
+        }
+
+        if (novo.getImagemUrl() != null) {
+            existente.setImagemUrl(novo.getImagemUrl());
+        }
+
+        if (novo.getTipo() != null) {
+            existente.setTipo(novo.getTipo());
+        }
+
+        if (novo.getPreco() != null) {
+            existente.setPreco(novo.getPreco());
+        }
+
+        return produtoRepository.save(existente);
+    }
+
+    @Override
     public void delete(Long id) {
         produtoRepository.deleteById(id);
     }
