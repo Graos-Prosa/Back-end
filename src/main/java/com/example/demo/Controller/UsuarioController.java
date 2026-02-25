@@ -21,7 +21,7 @@ public class UsuarioController {
         this.enderecoService = enderecoService;
     }
     @GetMapping("/{id}")
-    public Usuario getById(@PathVariable Long id) {
+    public Usuario findById(@PathVariable Long id) {
         return usuarioService.findById(id);
     }
 

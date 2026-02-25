@@ -17,7 +17,7 @@ public class CupomController {
     }
 
     @GetMapping("/{id}")
-    public Cupom getById(@PathVariable Long id) {
+    public Cupom findById(@PathVariable Long id) {
         return cupomService.findById(id);
     }
 

@@ -17,7 +17,7 @@ public class PedidoController {
     }
 
     @GetMapping("/{id}")
-    public Pedido getById(@PathVariable Long id) {
+    public Pedido findById(@PathVariable Long id) {
         return pedidoService.findById(id);
     }
 
