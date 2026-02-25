@@ -32,7 +32,12 @@ public class CredencialController {
     }
 
     @PutMapping("/{id}")
-    public Credencial update( @PathVariable Long id, @RequestBody Credencial credencial) { return credencialService.update(id, credencial);}
+    public Credencial update(@PathVariable Long id, @RequestBody Credencial credencial) { return credencialService.update(id, credencial);}
+
+    @PatchMapping("/{id}")
+    public Credencial updateParcial(@PathVariable Long id, @RequestBody Credencial credencial) {
+
+    }
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
@@ -41,3 +46,4 @@ public class CredencialController {
     }
 
 }
+

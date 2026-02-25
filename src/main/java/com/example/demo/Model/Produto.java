@@ -21,6 +21,8 @@ public class Produto {
     private String titulo;
     @Column(name = "descricao", nullable = false , length = 512)
     private String descricao;
+    @Column(name = "imagem")
+    private String imagemUrl;
     @Column(name = "tipo", nullable = false , length = 50)
     private String tipo;
     @Column(name = "preco", nullable = false , precision = 10 , scale = 2)
