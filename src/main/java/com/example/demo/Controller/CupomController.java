@@ -17,7 +17,7 @@ public class CupomController {
     }
 
     @GetMapping("/{id}")
-    public Cupom getById(@PathVariable BigInteger id) {
+    public Cupom getById(@PathVariable Long id) {
         return cupomService.getById(id);
     }
 
@@ -32,11 +32,11 @@ public class CupomController {
     }
 
     @PutMapping("/{id}")
-    public Cupom update( @PathVariable BigInteger id, @RequestBody Cupom cupom) { return cupomService.update(id, cupom);}
+    public Cupom update( @PathVariable Long id, @RequestBody Cupom cupom) { return cupomService.update(id, cupom);}
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable BigInteger id) {
+    public void delete(@PathVariable Long id) {
         cupomService.delete(id);
     }
 

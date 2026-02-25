@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.math.BigInteger;
 import java.util.Optional;
 
-public interface EnderecoRepository extends JpaRepository<Endereco, BigInteger> {
+public interface EnderecoRepository extends JpaRepository<Endereco, Long> {
 
-    Optional<Endereco> findByIdUsuario(BigInteger usuarioId);
+    Optional<Endereco> findByUsuario_idUsuario(Long usuarioId);
 }

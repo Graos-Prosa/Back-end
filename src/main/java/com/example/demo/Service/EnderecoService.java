@@ -6,9 +6,9 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface EnderecoService {
-    public Endereco getById(BigInteger id);
+    public Endereco getById(Long id);
     public List<Endereco> getAll();
     public Endereco save(Endereco endereco);
-    public Endereco update(BigInteger id, Endereco endereco);
-    public void delete(BigInteger id);
+    public Endereco update(Long id, Endereco endereco);
+    public void delete(Long id);
 }

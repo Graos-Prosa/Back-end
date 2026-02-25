@@ -18,7 +18,7 @@ public class CupomServiceImpl implements CupomService {
     }
 
     @Override
-    public Cupom getById(BigInteger id) {
+    public Cupom getById(Long id) {
         return cupomRepository.getById(id);
     }
 
@@ -34,12 +34,12 @@ public class CupomServiceImpl implements CupomService {
 
     //implementar metodo de update
     @Override
-    public Cupom update(BigInteger id, Cupom cupom) {
+    public Cupom update(Long id, Cupom cupom) {
         return null;
     }
 
     @Override
-    public void delete(BigInteger id) {
+    public void delete(Long id) {
         cupomRepository.deleteById(id);
     }
 }

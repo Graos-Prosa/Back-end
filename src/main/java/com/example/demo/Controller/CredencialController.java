@@ -17,7 +17,7 @@ public class CredencialController {
     }
 
     @GetMapping("/{id}")
-    public Credencial getById(@PathVariable BigInteger id) {
+    public Credencial getById(@PathVariable Long id) {
         return credencialService.getById(id);
     }
 
@@ -32,11 +32,11 @@ public class CredencialController {
     }
 
     @PutMapping("/{id}")
-    public Credencial update( @PathVariable BigInteger id, @RequestBody Credencial credencial) { return credencialService.update(id, credencial);}
+    public Credencial update( @PathVariable Long id, @RequestBody Credencial credencial) { return credencialService.update(id, credencial);}
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable BigInteger id) {
+    public void delete(@PathVariable Long id) {
         credencialService.delete(id);
     }
 

@@ -17,7 +17,7 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_item", nullable = false)
-    private BigInteger idItem;
+    private Long idItem;
     @OneToOne
     @JoinColumn(name = "id_produto")
     private Produto produto;

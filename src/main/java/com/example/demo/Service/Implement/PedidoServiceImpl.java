@@ -18,7 +18,7 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public Pedido getById(BigInteger id) {
+    public Pedido getById(Long id) {
         return pedidoRepository.getById(id);
     }
 
@@ -34,12 +34,12 @@ public class PedidoServiceImpl implements PedidoService {
 
     //implementar metodo de update
     @Override
-    public Pedido update(BigInteger id, Pedido pedido) {
+    public Pedido update(Long id, Pedido pedido) {
         return null;
     }
 
     @Override
-    public void delete(BigInteger id) {
+    public void delete(Long id) {
         pedidoRepository.deleteById(id);
     }
 }

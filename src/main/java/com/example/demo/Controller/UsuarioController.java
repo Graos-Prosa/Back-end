@@ -21,7 +21,7 @@ public class UsuarioController {
         this.enderecoService = enderecoService;
     }
     @GetMapping("/{id}")
-    public Usuario getById(@PathVariable BigInteger id) {
+    public Usuario getById(@PathVariable Long id) {
         return usuarioService.getById(id);
     }
 
@@ -36,17 +36,17 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public Usuario update( @PathVariable BigInteger id, @RequestBody Usuario usuario) { return usuarioService.update(id, usuario);}
+    public Usuario update( @PathVariable Long id, @RequestBody Usuario usuario) { return usuarioService.update(id, usuario);}
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable BigInteger id) {
+    public void delete(@PathVariable Long id) {
         usuarioService.delete(id);
     }
 
     //ENDEREÇO
     @GetMapping("/usuarios/{id}/endereco")
-    public Endereco getEndereco(@PathVariable BigInteger id) {
+    public Endereco getEndereco(@PathVariable Long id) {
         return enderecoService.buscarPorUsuario(id);
     }
 }

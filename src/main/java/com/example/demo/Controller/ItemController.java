@@ -17,7 +17,7 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public Item getById(@PathVariable BigInteger id) {
+    public Item getById(@PathVariable Long id) {
         return itemService.getById(id);
     }
 
@@ -32,11 +32,11 @@ public class ItemController {
     }
 
     @PutMapping("/{id}")
-    public Item update( @PathVariable BigInteger id, @RequestBody Item item) { return itemService.update(id, item);}
+    public Item update( @PathVariable Long id, @RequestBody Item item) { return itemService.update(id, item);}
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable BigInteger id) {
+    public void delete(@PathVariable Long id) {
         itemService.delete(id);
     }
 

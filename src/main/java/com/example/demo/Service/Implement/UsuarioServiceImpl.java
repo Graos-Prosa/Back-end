@@ -18,7 +18,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario getById(BigInteger id) {
+    public Usuario getById(Long id) {
         return usuarioRepository.getById(id);
     }
 
@@ -34,12 +34,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     //implementar metodo de update
     @Override
-    public Usuario update(BigInteger id, Usuario usuario) {
+    public Usuario update(Long id, Usuario usuario) {
         return null;
     }
 
     @Override
-    public void delete(BigInteger id) {
+    public void delete(Long id) {
         usuarioRepository.deleteById(id);
     }
 }

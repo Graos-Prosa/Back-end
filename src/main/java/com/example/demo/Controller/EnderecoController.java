@@ -17,7 +17,7 @@ public class EnderecoController {
     }
 
     @GetMapping("/{id}")
-    public Endereco getById(@PathVariable BigInteger id) {
+    public Endereco getById(@PathVariable Long id) {
         return enderecoService.getById(id);
     }
 
@@ -32,11 +32,11 @@ public class EnderecoController {
     }
 
     @PutMapping("/{id}")
-    public Endereco update( @PathVariable BigInteger id, @RequestBody Endereco endereco) { return enderecoService.update(id, endereco);}
+    public Endereco update( @PathVariable Long id, @RequestBody Endereco endereco) { return enderecoService.update(id, endereco);}
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable BigInteger id) {
+    public void delete(@PathVariable Long id) {
         enderecoService.delete(id);
     }
 

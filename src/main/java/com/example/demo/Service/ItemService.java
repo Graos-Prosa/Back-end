@@ -6,9 +6,9 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface ItemService {
-    public Item getById(BigInteger id);
+    public Item getById(Long id);
     public List<Item> getAll();
     public Item save(Item item);
-    public Item update(BigInteger id, Item item);
-    public void delete(BigInteger id);
+    public Item update(Long id, Item item);
+    public void delete(Long id);
 }
