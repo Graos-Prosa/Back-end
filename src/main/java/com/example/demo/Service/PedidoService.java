@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface PedidoService {
-    public Pedido getById(Long id);
+    public Pedido findById(Long id);
     public List<Pedido> getAll();
     public Pedido save(Pedido pedido);
     public Pedido update(Long id, Pedido pedido);

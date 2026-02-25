@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface CupomService {
-    public Cupom getById(Long id);
+    public Cupom findById(Long id);
     public List<Cupom> getAll();
     public Cupom save(Cupom cupom);
     public Cupom update(Long id, Cupom cupom);

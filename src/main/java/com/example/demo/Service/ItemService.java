@@ -6,7 +6,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface ItemService {
-    public Item getById(Long id);
+    public Item findById(Long id);
     public List<Item> getAll();
     public Item save(Item item);
     public Item update(Long id, Item item);

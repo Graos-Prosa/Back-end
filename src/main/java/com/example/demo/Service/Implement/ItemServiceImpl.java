@@ -18,8 +18,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item getById(Long id) {
-        return itemRepository.getById(id);
+    public Item findById(Long id) {
+        return itemRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Item não encontrado."));
     }
 
     @Override

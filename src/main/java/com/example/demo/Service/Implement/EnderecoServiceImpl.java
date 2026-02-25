@@ -18,8 +18,9 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
-    public Endereco getById(Long id) {
-        return enderecoRepository.getById(id);
+    public Endereco findById(Long id) {
+        return enderecoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Endereço não encontrado."));
     }
 
     @Override

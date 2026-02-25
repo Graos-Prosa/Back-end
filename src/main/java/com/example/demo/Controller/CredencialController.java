@@ -4,7 +4,6 @@ import com.example.demo.Model.Credencial;
 import com.example.demo.Service.CredencialService;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -35,8 +34,8 @@ public class CredencialController {
     public Credencial update(@PathVariable Long id, @RequestBody Credencial credencial) { return credencialService.update(id, credencial);}
 
     @PatchMapping("/{id}")
-    public Credencial updateParcial(@PathVariable Long id, @RequestBody Credencial credencial) {
-
+    public Credencial updatePartial(@PathVariable Long id, @RequestBody Credencial credencial) {
+        return credencialService.updatePartial(id, credencial);
     }
 
     //implementar autenticação de delete

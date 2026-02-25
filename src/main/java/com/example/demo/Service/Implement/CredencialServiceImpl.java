@@ -17,9 +17,13 @@ public class CredencialServiceImpl implements CredencialService {
         this.credencialRepository = credencialRepository;
     }
 
+    //Esses @Override em cima dos métodos é pra dizer olha, estou usando esse método que está na interface
+
     @Override
-    public Credencial getById(Long id) {
-        return credencialRepository.getById(id);
+    public Credencial FindById(Long id) {
+        return credencialRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Credencial não encontrada."));
+        //.orElseThrow() faz com que o método retorno um objeto invés de um Optional
     }
 
     @Override
@@ -36,6 +40,11 @@ public class CredencialServiceImpl implements CredencialService {
     @Override
     public Credencial update(Long id, Credencial credencial) {
         return null;
+    }
+
+    @Override
+    public Credencial updatePartial(Long id, Credencial credencial) {
+        Credencial existente = credencial;
     }
 
     @Override

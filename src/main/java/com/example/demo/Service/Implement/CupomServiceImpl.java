@@ -18,8 +18,9 @@ public class CupomServiceImpl implements CupomService {
     }
 
     @Override
-    public Cupom getById(Long id) {
-        return cupomRepository.getById(id);
+    public Cupom findById(Long id) {
+        return cupomRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cupom não encontrado."));
     }
 
     @Override
