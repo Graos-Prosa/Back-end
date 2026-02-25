@@ -18,8 +18,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario getById(Long id) {
-        return usuarioRepository.getById(id);
+    public Usuario findById(Long id) {
+        return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario não encontrado."));
     }
 
     @Override
@@ -36,6 +37,34 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Override
     public Usuario update(Long id, Usuario usuario) {
         return null;
+    }
+
+    @Override
+    public Usuario updatePartial(Long id, Usuario novo) {
+        Usuario existente = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+
+        if (novo.getNome() != null) {
+            existente.setNome(novo.getNome());
+        }
+
+        if (novo.getSobrenome() != null) {
+            existente.setSobrenome(novo.getSobrenome());
+        }
+
+        if (novo.getTelefone() != null) {
+            existente.setTelefone(novo.getTelefone());
+        }
+
+        if (novo.getAniversario() != null) {
+            existente.setAniversario(novo.getAniversario());
+        }
+
+        if (novo.getDeletado_em() != null) {
+            existente.setDeletado_em(novo.getDeletado_em());
+        }
+
+        return usuarioRepository.save(existente);
     }
 
     @Override

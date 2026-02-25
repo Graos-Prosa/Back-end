@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Model.Endereco;
 import com.example.demo.Model.Item;
 import com.example.demo.Service.ItemService;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,7 @@ public class ItemController {
 
     @GetMapping("/{id}")
     public Item getById(@PathVariable Long id) {
-        return itemService.getById(id);
+        return itemService.findById(id);
     }
 
     @GetMapping
@@ -33,6 +34,11 @@ public class ItemController {
 
     @PutMapping("/{id}")
     public Item update( @PathVariable Long id, @RequestBody Item item) { return itemService.update(id, item);}
+
+    @PatchMapping("/{id}")
+    public Item updatePartial(@PathVariable Long id, @RequestBody Item item) {
+        return itemService.updatePartial(id, item);
+    }
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")

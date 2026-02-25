@@ -18,7 +18,7 @@ public class PedidoController {
 
     @GetMapping("/{id}")
     public Pedido getById(@PathVariable Long id) {
-        return pedidoService.getById(id);
+        return pedidoService.findById(id);
     }
 
     @GetMapping
@@ -33,6 +33,11 @@ public class PedidoController {
 
     @PutMapping("/{id}")
     public Pedido update( @PathVariable Long id, @RequestBody Pedido pedido) { return pedidoService.update(id, pedido);}
+
+    @PatchMapping("/{id}")
+    public Pedido updatePartial(@PathVariable Long id, @RequestBody Pedido pedido) {
+        return pedidoService.updatePartial(id, pedido);
+    }
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")

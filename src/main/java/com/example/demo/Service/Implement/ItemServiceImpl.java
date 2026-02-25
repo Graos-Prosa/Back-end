@@ -1,5 +1,6 @@
 package com.example.demo.Service.Implement;
 
+import com.example.demo.Model.Credencial;
 import com.example.demo.Model.Item;
 import com.example.demo.Repository.ItemRepository;
 import com.example.demo.Service.ItemService;
@@ -18,8 +19,9 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item getById(Long id) {
-        return itemRepository.getById(id);
+    public Item findById(Long id) {
+        return itemRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Item não encontrado."));
     }
 
     @Override
@@ -36,6 +38,23 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Item update(Long id, Item item) {
         return null;
+    }
+
+    @Override
+    public Item updatePartial(Long id, Item novo) {
+        Item existente = itemRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Item não encontrada."));
+
+        if (novo.getQuantidade() != null) {
+            existente.setQuantidade(novo.getQuantidade());
+        }
+
+        if (novo.getSubtotal() != null) {
+            existente.setSubtotal(novo.getSubtotal());
+        }
+
+        //melhor retornar o objeto ou null?
+        return itemRepository.save(existente);
     }
 
     @Override

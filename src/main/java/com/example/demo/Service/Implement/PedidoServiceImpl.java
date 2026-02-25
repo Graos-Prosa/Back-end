@@ -18,8 +18,9 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public Pedido getById(Long id) {
-        return pedidoRepository.getById(id);
+    public Pedido findById(Long id) {
+        return pedidoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado."));
     }
 
     @Override
@@ -36,6 +37,30 @@ public class PedidoServiceImpl implements PedidoService {
     @Override
     public Pedido update(Long id, Pedido pedido) {
         return null;
+    }
+
+    @Override
+    public Pedido updatePartial(Long id, Pedido novo) {
+        Pedido existente = pedidoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado."));
+
+        if (novo.getEstado() != null) {
+            existente.setEstado(novo.getEstado());
+        }
+
+        if (novo.getDesconto() != null) {
+            existente.setDesconto(novo.getDesconto());
+        }
+
+        if (novo.getValorTotal() != null) {
+            existente.setValorTotal(novo.getValorTotal());
+        }
+
+        if (novo.getValorFinal() != null) {
+            existente.setValorFinal(novo.getValorFinal());
+        }
+
+        return pedidoRepository.save(existente);
     }
 
     @Override

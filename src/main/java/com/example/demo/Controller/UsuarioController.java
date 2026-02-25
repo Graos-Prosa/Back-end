@@ -22,7 +22,7 @@ public class UsuarioController {
     }
     @GetMapping("/{id}")
     public Usuario getById(@PathVariable Long id) {
-        return usuarioService.getById(id);
+        return usuarioService.findById(id);
     }
 
     @GetMapping
@@ -37,6 +37,11 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     public Usuario update( @PathVariable Long id, @RequestBody Usuario usuario) { return usuarioService.update(id, usuario);}
+
+    @PatchMapping("/{id}")
+    public Usuario updatePartial(@PathVariable Long id, @RequestBody Usuario usuario) {
+        return usuarioService.updatePartial(id, usuario);
+    }
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
