@@ -18,7 +18,7 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public Item getById(@PathVariable Long id) {
+    public Item findById(@PathVariable Long id) {
         return itemService.findById(id);
     }
 
