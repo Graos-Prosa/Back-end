@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.math.BigInteger;
 
-public interface CredencialRepository extends JpaRepository<Credencial, BigInteger> {
+public interface CredencialRepository extends JpaRepository<Credencial, Long> {
 }

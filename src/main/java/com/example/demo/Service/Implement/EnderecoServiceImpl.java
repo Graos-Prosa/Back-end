@@ -18,7 +18,7 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
-    public Endereco getById(BigInteger id) {
+    public Endereco getById(Long id) {
         return enderecoRepository.getById(id);
     }
 
@@ -34,16 +34,16 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     //implementar metodo de update
     @Override
-    public Endereco update(BigInteger id, Endereco endereco) {
+    public Endereco update(Long id, Endereco endereco) {
         return null;
     }
 
     @Override
-    public void delete(BigInteger id) {
+    public void delete(Long id) {
         enderecoRepository.deleteById(id);
     }
 
-    public Endereco buscarPorUsuario(BigInteger id) {
-        return enderecoRepository.findByIdUsuario(id).orElseThrow(() -> new RuntimeException("Endereço não encontrado"));
+    public Endereco buscarPorUsuario(Long id) {
+        return enderecoRepository.findByUsuario_idUsuario(id).orElseThrow(() -> new RuntimeException("Endereço não encontrado"));
     }
 }

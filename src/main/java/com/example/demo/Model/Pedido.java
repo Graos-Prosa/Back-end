@@ -18,7 +18,7 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pedido", nullable = false)
-    private BigInteger idPedido;
+    private Long idPedido;
     @ManyToOne
     @JoinColumn(name = "id_usuario" , nullable = false)
     private Usuario usuario;

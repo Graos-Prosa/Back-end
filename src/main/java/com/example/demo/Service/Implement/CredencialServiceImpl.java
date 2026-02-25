@@ -18,7 +18,7 @@ public class CredencialServiceImpl implements CredencialService {
     }
 
     @Override
-    public Credencial getById(BigInteger id) {
+    public Credencial getById(Long id) {
         return credencialRepository.getById(id);
     }
 
@@ -34,12 +34,12 @@ public class CredencialServiceImpl implements CredencialService {
 
     //implementar metodo de update
     @Override
-    public Credencial update(BigInteger id, Credencial credencial) {
+    public Credencial update(Long id, Credencial credencial) {
         return null;
     }
 
     @Override
-    public void delete(BigInteger id) {
+    public void delete(Long id) {
         credencialRepository.deleteById(id);
     }
 }

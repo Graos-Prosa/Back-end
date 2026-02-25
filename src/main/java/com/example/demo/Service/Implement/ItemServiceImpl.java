@@ -18,7 +18,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item getById(BigInteger id) {
+    public Item getById(Long id) {
         return itemRepository.getById(id);
     }
 
@@ -34,12 +34,12 @@ public class ItemServiceImpl implements ItemService {
 
     //implementar metodo de update
     @Override
-    public Item update(BigInteger id, Item item) {
+    public Item update(Long id, Item item) {
         return null;
     }
 
     @Override
-    public void delete(BigInteger id) {
+    public void delete(Long id) {
         itemRepository.deleteById(id);
     }
 }

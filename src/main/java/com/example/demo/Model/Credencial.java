@@ -17,7 +17,7 @@ public class Credencial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_credencial", nullable = false)
-    private BigInteger idCredencial;
+    private Long idCredencial;
     @OneToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;

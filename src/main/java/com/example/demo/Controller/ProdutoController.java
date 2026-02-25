@@ -19,7 +19,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public Produto getById(@PathVariable BigInteger id) {
+    public Produto getById(@PathVariable Long id) {
         return produtoService.getById(id);
     }
 
@@ -34,11 +34,11 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public Produto update( @PathVariable BigInteger id, @RequestBody Produto produto) { return produtoService.update(id, produto);}
+    public Produto update( @PathVariable Long id, @RequestBody Produto produto) { return produtoService.update(id, produto);}
 
     //implementar autenticação de delete
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable BigInteger id) {
+    public void delete(@PathVariable Long id) {
         produtoService.delete(id);
     }
 

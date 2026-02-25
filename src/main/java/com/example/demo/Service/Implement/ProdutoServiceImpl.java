@@ -18,7 +18,7 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
-    public Produto getById(BigInteger id) {
+    public Produto getById(Long id) {
         return produtoRepository.getById(id);
     }
 
@@ -34,12 +34,12 @@ public class ProdutoServiceImpl implements ProdutoService {
 
     //implementar metodo de update
     @Override
-    public Produto update(BigInteger id, Produto produto) {
+    public Produto update(Long id, Produto produto) {
         return null;
     }
 
     @Override
-    public void delete(BigInteger id) {
+    public void delete(Long id) {
         produtoRepository.deleteById(id);
     }
 }

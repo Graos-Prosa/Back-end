@@ -17,7 +17,7 @@ public class Cupom {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cupom", nullable = false)
-    private BigInteger idCupom;
+    private Long idCupom;
     @Column(name = "codigo", nullable = false , length = 50)
     private String codigo;
     @Column(name = "valor", nullable = false , precision = 10 , scale = 2)
