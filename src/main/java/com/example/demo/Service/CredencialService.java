@@ -10,5 +10,6 @@ public interface CredencialService {
     public Credencial save(Credencial credencial);
     public Credencial update(Long id, Credencial credencial);
     public Credencial updatePartial(Long id, Credencial credencial);
+    public String cifrarSenha(String senha);
     public void delete(Long id);
 }

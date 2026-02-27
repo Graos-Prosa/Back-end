@@ -70,4 +70,9 @@ public class CredencialServiceImpl implements CredencialService {
     public void delete(Long id) {
         credencialRepository.deleteById(id);
     }
+
+    @Override
+    public String cifrarSenha(String senha) {
+        return null;
+    }
 }
