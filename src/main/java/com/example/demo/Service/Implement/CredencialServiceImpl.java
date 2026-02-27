@@ -3,6 +3,8 @@ package com.example.demo.Service.Implement;
 import com.example.demo.Model.Credencial;
 import com.example.demo.Repository.CredencialRepository;
 import com.example.demo.Service.CredencialService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -12,6 +14,9 @@ import java.util.List;
 public class CredencialServiceImpl implements CredencialService {
 
     private final CredencialRepository credencialRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public CredencialServiceImpl(CredencialRepository credencialRepository) {
         this.credencialRepository = credencialRepository;
@@ -36,6 +41,8 @@ public class CredencialServiceImpl implements CredencialService {
 
     @Override
     public Credencial save(Credencial credencial) {
+        String senha = passwordEncoder.encode(credencial.getSenha());
+        credencial.setSenha(senha);
         return credencialRepository.save(credencial);
     }
 
