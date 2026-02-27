@@ -9,6 +9,7 @@ public interface CredencialService {
     public List<Credencial> getAll();
     public Credencial save(Credencial credencial);
     public Credencial update(Long id, Credencial credencial);
-    public Credencial updatePartial(Long id, Credencial credencial);
+    public Credencial updateSenha(Long id, Credencial credencial);
+    public Boolean verificarAutenticidade(Credencial credencial);
     public void delete(Long id);
 }

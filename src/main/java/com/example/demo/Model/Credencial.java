@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "credencial")
@@ -21,10 +22,14 @@ public class Credencial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_credencial", nullable = false)
     private Long idCredencial;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "credencial_roles", joinColumns = @JoinColumn(name = "id_credencial"))
+    @Column(name = "role")
+    private List<String> roles;
     @OneToOne
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
-    @Column(name = "email", nullable = false, length = 80)
+    @Column(name = "email", unique = true, nullable = false, length = 80)
     private String email;
     @Column(name = "senha", nullable = false, length = 100)
     private String senha;
