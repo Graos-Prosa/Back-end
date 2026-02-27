@@ -24,7 +24,7 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
-    public List<Endereco> getAll() {
+    public List<Endereco> findAll() {
         return enderecoRepository.findAll();
     }
 

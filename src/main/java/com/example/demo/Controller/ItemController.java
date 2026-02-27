@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/item")
 public class ItemController {
+
     private final ItemService itemService;
 
     public ItemController(ItemService itemService) {
@@ -23,8 +24,8 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<Item> getAll() {
-        return itemService.getAll();
+    public List<Item> findAll() {
+        return itemService.findAll();
     }
 
     @PostMapping

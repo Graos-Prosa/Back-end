@@ -22,6 +22,7 @@ public class Credencial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_credencial", nullable = false)
     private Long idCredencial;
+    //fetch = FetchType.EAGER = sempre que buscar credencial, as roles vão vir junto
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "credencial_roles", joinColumns = @JoinColumn(name = "id_credencial"))
     @Column(name = "role")

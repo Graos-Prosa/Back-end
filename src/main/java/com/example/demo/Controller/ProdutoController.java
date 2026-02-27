@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController {
+
     private final ProdutoService produtoService;
 
     public ProdutoController(ProdutoService produtoService) {
@@ -24,8 +25,8 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public List<Produto> getAll() {
-        return produtoService.getAll();
+    public List<Produto> findAll() {
+        return produtoService.findAll();
     }
 
     @PostMapping

@@ -8,9 +8,10 @@ import java.util.List;
 
 public interface EnderecoService {
     public Endereco findById(Long id);
-    public List<Endereco> getAll();
+    public List<Endereco> findAll();
     public Endereco save(Endereco endereco);
     public Endereco update(Long id, Endereco endereco);
     public Endereco updatePartial(Long id, Endereco endereco);
     public void delete(Long id);
+    public Endereco buscarPorUsuario(Long id);
 }

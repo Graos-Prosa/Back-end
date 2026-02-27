@@ -11,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/endereco")
 public class EnderecoController {
+
     private final EnderecoService enderecoService;
 
     public EnderecoController(EnderecoService enderecoService) {
@@ -23,8 +24,8 @@ public class EnderecoController {
     }
 
     @GetMapping
-    public List<Endereco> getAll() {
-        return enderecoService.getAll();
+    public List<Endereco> findAll() {
+        return enderecoService.findAll();
     }
 
     @PostMapping

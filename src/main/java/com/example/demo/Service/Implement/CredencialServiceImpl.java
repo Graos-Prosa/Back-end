@@ -1,5 +1,7 @@
 package com.example.demo.Service.Implement;
 
+import com.example.demo.DTO.CredencialDTO;
+import com.example.demo.DTO.LoginRespostaDTO;
 import com.example.demo.Model.Credencial;
 import com.example.demo.Repository.CredencialRepository;
 import com.example.demo.Service.CredencialService;
@@ -7,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class CredencialServiceImpl implements CredencialService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private JwtService jwtService;
+    private JwtServiceImpl jwtService;
 
     public CredencialServiceImpl(CredencialRepository credencialRepository) {
         this.credencialRepository = credencialRepository;
@@ -40,7 +41,7 @@ public class CredencialServiceImpl implements CredencialService {
     }
 
     @Override
-    public List<Credencial> getAll() {
+    public List<Credencial> findAll() {
         return credencialRepository.findAll();
     }
 
@@ -86,10 +87,10 @@ public class CredencialServiceImpl implements CredencialService {
 
         //esse .get() pega o objeto credencial dentro do optional
         Credencial credencialExistente = existente.get();
-        String senhaDigitada = credencial.getSenha();
 
+        //esse matches compara a senha hash salva no banco com o hash da senha digitada
         if (!passwordEncoder.matches(credencial.getSenha(), credencialExistente.getSenha())) {
-            return new LoginResponseDTO(false, "Senha inválida", null, null);
+            return new LoginRespostaDTO(false, "Senha inválida", null, null);
         }
 
         String token = jwtService.gerarToken(credencialExistente);

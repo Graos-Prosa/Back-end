@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CupomService {
     public Cupom findById(Long id);
-    public List<Cupom> getAll();
+    public List<Cupom> findAll();
     public Cupom save(Cupom cupom);
     public Cupom update(Long id, Cupom cupom);
     public Cupom updatePartial(Long id, Cupom cupom);

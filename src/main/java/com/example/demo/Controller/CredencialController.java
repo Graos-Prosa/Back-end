@@ -25,8 +25,8 @@ public class CredencialController {
     }
 
     @GetMapping
-    public List<Credencial> getAll() {
-        return credencialService.getAll();
+    public List<Credencial> findAll() {
+        return credencialService.findAll();
     }
 
     @PostMapping

@@ -1,12 +1,11 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.Endereco;
-import com.example.demo.Model.Usuario;
-import com.example.demo.Service.Implement.EnderecoServiceImpl;
+import com.example.demo.DTO.UsuarioCreateDTO;
+import com.example.demo.DTO.UsuarioDTO;
+import com.example.demo.DTO.UsuarioUpdateDTO;
 import com.example.demo.Service.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -14,44 +13,38 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
-    private final EnderecoServiceImpl enderecoService;
 
-    public UsuarioController(UsuarioService usuarioService, EnderecoServiceImpl enderecoService) {
+    public UsuarioController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
-        this.enderecoService = enderecoService;
     }
+
     @GetMapping("/{id}")
-    public Usuario findById(@PathVariable Long id) {
+    public UsuarioDTO findById(@PathVariable Long id) {
         return usuarioService.findById(id);
     }
 
     @GetMapping
-    public List<Usuario> getAll() {
-        return usuarioService.getAll();
+    public List<UsuarioDTO> findAll() {
+        return usuarioService.findAll();
     }
 
     @PostMapping
-    public Usuario create(@RequestBody Usuario usuario) {
-        return usuarioService.save(usuario);
+    public UsuarioDTO create(@RequestBody UsuarioCreateDTO dto) {
+        return usuarioService.save(dto);
     }
 
     @PutMapping("/{id}")
-    public Usuario update( @PathVariable Long id, @RequestBody Usuario usuario) { return usuarioService.update(id, usuario);}
-
-    @PatchMapping("/{id}")
-    public Usuario updatePartial(@PathVariable Long id, @RequestBody Usuario usuario) {
-        return usuarioService.updatePartial(id, usuario);
+    public UsuarioDTO update(@PathVariable Long id, @RequestBody UsuarioUpdateDTO dto) {
+        return usuarioService.update(id, dto);
     }
 
-    //implementar autenticação de delete
+    @PatchMapping("/{id}")
+    public UsuarioDTO updatePartial(@PathVariable Long id, @RequestBody UsuarioDTO usuarioDTO) {
+        return usuarioService.updatePartial(id, usuarioDTO);
+    }
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         usuarioService.delete(id);
-    }
-
-    //ENDEREÇO
-    @GetMapping("/usuarios/{id}/endereco")
-    public Endereco getEndereco(@PathVariable Long id) {
-        return enderecoService.buscarPorUsuario(id);
     }
 }

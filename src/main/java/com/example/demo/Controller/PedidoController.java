@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/pedido")
 public class PedidoController {
+
     private final PedidoService pedidoService;
 
     public PedidoController(PedidoService pedidoService) {
@@ -22,8 +23,8 @@ public class PedidoController {
     }
 
     @GetMapping
-    public List<Pedido> getAll() {
-        return pedidoService.getAll();
+    public List<Pedido> findAll() {
+        return pedidoService.findAll();
     }
 
     @PostMapping

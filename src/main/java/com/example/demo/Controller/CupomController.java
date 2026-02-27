@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/cupom")
 public class CupomController {
+
     private final CupomService cupomService;
 
     public CupomController(CupomService cupomService) {
@@ -22,8 +23,8 @@ public class CupomController {
     }
 
     @GetMapping
-    public List<Cupom> getAll() {
-        return cupomService.getAll();
+    public List<Cupom> findAll() {
+        return cupomService.findAll();
     }
 
     @PostMapping

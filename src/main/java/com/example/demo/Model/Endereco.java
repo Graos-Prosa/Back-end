@@ -16,7 +16,7 @@ public class Endereco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_endereco", nullable = false)
     private Long idEndereco;
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(nullable = false, name = "id_usuario")
     private Usuario usuario;
     @Column(name = "logradouro", nullable = false , length = 150)

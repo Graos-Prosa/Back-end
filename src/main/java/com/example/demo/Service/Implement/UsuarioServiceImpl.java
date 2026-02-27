@@ -1,5 +1,8 @@
 package com.example.demo.Service.Implement;
 
+import com.example.demo.DTO.UsuarioCreateDTO;
+import com.example.demo.DTO.UsuarioDTO;
+import com.example.demo.DTO.UsuarioUpdateDTO;
 import com.example.demo.Model.Usuario;
 import com.example.demo.Repository.UsuarioRepository;
 import com.example.demo.Service.UsuarioService;
@@ -18,53 +21,71 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public Usuario findById(Long id) {
-        return usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario não encontrado."));
+    public UsuarioDTO findById(Long id) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        return new UsuarioDTO(usuario);
     }
 
     @Override
-    public List<Usuario> getAll() {
-        return usuarioRepository.findAll();
+    public List<UsuarioDTO> findAll() {
+        return usuarioRepository.findAll().stream().map(UsuarioDTO::new).toList();
+        //stream() “quero trabalhar item por item”
+        //map() “para cada item, transforme em outra coisa”
+        //toList() “me devolva tudo como uma nova lista”
     }
 
     @Override
-    public Usuario save(Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public UsuarioDTO save(UsuarioCreateDTO dto) {
+
+        Usuario usuario = new Usuario();
+        usuario.setNome(dto.nome());
+        usuario.setSobrenome(dto.sobrenome());
+        usuario.setTelefone(dto.telefone());
+
+        Usuario salvo = usuarioRepository.save(usuario);
+
+        return new UsuarioDTO(salvo);
     }
 
     //implementar metodo de update
     @Override
-    public Usuario update(Long id, Usuario usuario) {
-        return null;
+    public UsuarioDTO update(Long id, UsuarioUpdateDTO dto) {
+
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        usuario.setNome(dto.nome());
+        usuario.setSobrenome(dto.sobrenome());
+        usuario.setTelefone(dto.telefone());
+
+        Usuario atualizado = usuarioRepository.save(usuario);
+
+        return new UsuarioDTO(atualizado);
     }
 
     @Override
-    public Usuario updatePartial(Long id, Usuario novo) {
-        Usuario existente = usuarioRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Usuario não encontrado"));
+    public UsuarioDTO updatePartial(Long id, UsuarioDTO dto) {
 
-        if (novo.getNome() != null) {
-            existente.setNome(novo.getNome());
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+
+        if (dto.nome() != null) {
+            usuario.setNome(dto.nome());
         }
 
-        if (novo.getSobrenome() != null) {
-            existente.setSobrenome(novo.getSobrenome());
+        if (dto.sobrenome() != null) {
+            usuario.setSobrenome(dto.sobrenome());
         }
 
-        if (novo.getTelefone() != null) {
-            existente.setTelefone(novo.getTelefone());
+        if (dto.telefone() != null) {
+            usuario.setTelefone(dto.telefone());
         }
 
-        if (novo.getAniversario() != null) {
-            existente.setAniversario(novo.getAniversario());
-        }
+        Usuario atualizado = usuarioRepository.save(usuario);
 
-        if (novo.getDeletado_em() != null) {
-            existente.setDeletado_em(novo.getDeletado_em());
-        }
-
-        return usuarioRepository.save(existente);
+        return new UsuarioDTO(atualizado);
     }
 
     @Override

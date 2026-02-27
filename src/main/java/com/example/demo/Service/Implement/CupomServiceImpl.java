@@ -25,7 +25,7 @@ public class CupomServiceImpl implements CupomService {
     }
 
     @Override
-    public List<Cupom> getAll() {
+    public List<Cupom> findAll() {
         return cupomRepository.findAll();
     }
 

@@ -7,6 +7,8 @@ import lombok.*;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -20,8 +22,9 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario", nullable = false)
     private Long idUsuario;
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Endereco endereco;
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    // fiz = new ArrayList<>(); para inicializar a lista direto aqui e simplificar no DTO
+    private List<Endereco> enderecos = new ArrayList<>();
     @Column(name = "nome", nullable = false , length = 100)
     private String nome;
     @Column(name = "sobrenome", nullable = false , length = 100)

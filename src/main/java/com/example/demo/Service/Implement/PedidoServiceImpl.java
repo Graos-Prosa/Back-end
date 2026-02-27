@@ -24,7 +24,7 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public List<Pedido> getAll() {
+    public List<Pedido> findAll() {
         return pedidoRepository.findAll();
     }
 

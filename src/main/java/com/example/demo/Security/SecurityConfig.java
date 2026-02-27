@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig {
 
-    //Diz que o objeto retornado será gerenciado pelo Spring
+    //@Bean Diz que o objeto retornado será gerenciado pelo Spring
     @Bean
     public PasswordEncoder senhaCriptografada() {
         return new BCryptPasswordEncoder();

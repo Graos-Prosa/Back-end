@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ItemService {
     public Item findById(Long id);
-    public List<Item> getAll();
+    public List<Item> findAll();
     public Item save(Item item);
     public Item update(Long id, Item item);
     public Item updatePartial(Long id, Item item);
