@@ -1,38 +1,59 @@
 package com.example.demo.Service.Implement;
 
+import com.example.demo.DTO.EnderecoCreateDTO;
 import com.example.demo.DTO.EnderecoDTO;
 import com.example.demo.DTO.EnderecoUpdateDTO;
 import com.example.demo.Model.Endereco;
+import com.example.demo.Model.Usuario;
 import com.example.demo.Repository.EnderecoRepository;
+import com.example.demo.Repository.UsuarioRepository;
 import com.example.demo.Service.EnderecoService;
+import com.example.demo.Service.UsuarioService;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class EnderecoServiceImpl implements EnderecoService {
 
     private final EnderecoRepository enderecoRepository;
+    private final UsuarioRepository usuarioRepository;
 
-    public EnderecoServiceImpl(EnderecoRepository enderecoRepository) {
+    public EnderecoServiceImpl(EnderecoRepository enderecoRepository, UsuarioRepository usuarioRepository) {
         this.enderecoRepository = enderecoRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
     @Override
-    public Endereco findById(Long id) {
-        return enderecoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Endereço não encontrado."));
+    public EnderecoDTO findById(Long id) {
+        //estou pensando se coloco HttpStatus em todos, pois retorna 404, 500 ou 200
+        Endereco endereco = enderecoRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Endereço não encontrado."));
+
+        return new EnderecoDTO(endereco);
     }
 
     @Override
-    public List<Endereco> findAll() {
-        return enderecoRepository.findAll();
+    public List<EnderecoDTO> findAll() {
+        List<Endereco> enderecos = enderecoRepository.findAll();
+        List<EnderecoDTO> enderecosDTOS = new ArrayList<>();
+        for (Endereco endereco : enderecos) {
+            enderecosDTOS.add(new EnderecoDTO(endereco));
+        }
+
+        return enderecosDTOS;
     }
 
     @Override
-    public Endereco save(Endereco endereco) {
-        return enderecoRepository.save(endereco);
+    public EnderecoDTO save(EnderecoCreateDTO dto) {
+        Usuario usuario = usuarioRepository.findById(dto.usuarioId())
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        Endereco endereco = new Endereco(dto, usuario);
+        return new EnderecoDTO(enderecoRepository.save(endereco));
     }
 
     @Override
@@ -84,7 +105,8 @@ public class EnderecoServiceImpl implements EnderecoService {
         enderecoRepository.deleteById(id);
     }
 
-    public Endereco buscarPorUsuario(Long id) {
-        return enderecoRepository.findByUsuario_idUsuario(id).orElseThrow(() -> new RuntimeException("Endereço não encontrado"));
+    public EnderecoDTO buscarPorUsuario(Long id) {
+        Endereco endereco = enderecoRepository.findByIdUsuario(id).orElseThrow(() -> new RuntimeException("Endereço não encontrado"));
+        return new EnderecoDTO(endereco);
     }
 }

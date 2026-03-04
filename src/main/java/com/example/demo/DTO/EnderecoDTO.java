@@ -4,6 +4,7 @@ import com.example.demo.Model.Endereco;
 
 public record EnderecoDTO(
         Long id,
+        Long idUsuario,
         String logradouro,
         Integer numero,
         String complemento,
@@ -18,6 +19,7 @@ public record EnderecoDTO(
     public EnderecoDTO(Endereco endereco) {
         this(
                 endereco.getIdEndereco(),
+                endereco.getUsuario().getIdUsuario(),
                 endereco.getLogradouro(),
                 endereco.getNumero(),
                 endereco.getComplemento(),
