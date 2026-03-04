@@ -14,6 +14,7 @@ public record EnderecoDTO(
         String estado,
         String pais
 ) {
+    //esse construtor é o que permite fazer isso: return new EnderecoDTO(endereco);
     public EnderecoDTO(Endereco endereco) {
         this(
                 endereco.getIdEndereco(),

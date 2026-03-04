@@ -1,6 +1,7 @@
 package com.example.demo.Service;
 
 import com.example.demo.DTO.EnderecoDTO;
+import com.example.demo.DTO.EnderecoUpdateDTO;
 import com.example.demo.Model.Credencial;
 import com.example.demo.Model.Endereco;
 
@@ -11,8 +12,7 @@ public interface EnderecoService {
     public EnderecoDTO findById(Long id);
     public List<EnderecoDTO> findAll();
     public EnderecoDTO save(Endereco endereco);
-    public EnderecoDTO update(Long id, Endereco endereco);
-    public EnderecoDTO updatePartial(Long id, Endereco endereco);
+    public EnderecoDTO update(Long id, EnderecoUpdateDTO endereco);
     public void delete(Long id);
-    public Endereco buscarPorUsuario(Long id);
+    public EnderecoDTO buscarPorUsuario(Long id);
 }
