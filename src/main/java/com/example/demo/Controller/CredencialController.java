@@ -1,6 +1,8 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DTO.CredencialCreateDTO;
 import com.example.demo.DTO.CredencialDTO;
+import com.example.demo.DTO.CredencialUpdateDTO;
 import com.example.demo.Model.Credencial;
 import com.example.demo.Service.CredencialService;
 import org.springframework.web.bind.annotation.*;
@@ -31,16 +33,13 @@ public class CredencialController {
     }
 
     @PostMapping
-    public CredencialDTO create(@RequestBody Credencial credencial) {
+    public CredencialDTO create(@RequestBody CredencialCreateDTO credencial) {
         return credencialService.save(credencial);
     }
 
-    @PutMapping("/{id}")
-    public CredencialDTO update(@PathVariable Long id, @RequestBody Credencial credencial) { return credencialService.update(id, credencial);}
-
     @PatchMapping("/{id}")
-    public CredencialDTO updateSenha(@PathVariable Long id, @RequestBody Credencial credencial) {
-        return credencialService.updateSenha(id, credencial);
+    public CredencialDTO update(@PathVariable Long id, @RequestBody CredencialUpdateDTO credencial) {
+        return credencialService.update(id, credencial);
     }
 
     //implementar autenticação de delete
