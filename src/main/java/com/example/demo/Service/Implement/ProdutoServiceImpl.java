@@ -1,11 +1,14 @@
 package com.example.demo.Service.Implement;
 
+import com.example.demo.DTO.ProdutoCreateDTO;
+import com.example.demo.DTO.ProdutoDTO;
 import com.example.demo.Model.Produto;
 import com.example.demo.Repository.ProdutoRepository;
 import com.example.demo.Service.ProdutoService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,19 +21,29 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
-    public Produto findById(Long id) {
-        return produtoRepository.findById(id)
+    public ProdutoDTO findById(Long id) {
+        Produto produto = produtoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado."));
+
+        return new ProdutoDTO(produto);
     }
 
     @Override
-    public List<Produto> findAll() {
-        return produtoRepository.findAll();
+    public List<ProdutoDTO> findAll() {
+        List<Produto> produtos = produtoRepository.findAll();
+        List<ProdutoDTO> produtoDTOS = new ArrayList<>();
+        for (Produto produto : produtos) {
+            produtoDTOS.add(new ProdutoDTO(produto));
+        }
+
+        return produtoDTOS;
     }
 
     @Override
-    public Produto save(Produto produto) {
-        return produtoRepository.save(produto);
+    public ProdutoDTO save(ProdutoCreateDTO dto) {
+        Produto produto = new Produto(dto);
+        produtoRepository.save(produto);
+        return new ProdutoDTO(produto);
     }
 
     //implementar metodo de update

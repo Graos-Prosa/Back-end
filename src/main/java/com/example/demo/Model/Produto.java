@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.example.demo.DTO.ProdutoCreateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
@@ -21,7 +22,7 @@ public class Produto {
     private String titulo;
     @Column(name = "descricao", nullable = false , length = 512)
     private String descricao;
-    @Column(name = "imagem")
+    @Column(name = "imagem", nullable = false)
     private String imagemUrl;
     @Column(name = "tipo", nullable = false , length = 50)
     private String tipo;
@@ -29,4 +30,13 @@ public class Produto {
     private BigDecimal preco;
     @Column(name = "quantidade", nullable = false)
     private Integer quantidade;
+
+    public Produto(ProdutoCreateDTO produto) {
+        this.titulo = produto.titulo();
+        this.descricao = produto.descricao();
+        this.tipo = produto.tipo();
+        this.imagemUrl = produto.imagemUrl();
+        this.preco = produto.preco();
+        this.quantidade = produto.quantidade();
+    }
 }
