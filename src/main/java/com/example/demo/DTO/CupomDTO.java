@@ -14,11 +14,11 @@ public record CupomDTO (
 ) {
     public CupomDTO(Cupom cupom) {
         this(
-        cupom.getIdCupom(),
-        cupom.getCodigo(),
-        cupom.getValor(),
-        cupom.getTipo(),
-        cupom.getEstado()
+            cupom.getIdCupom(),
+            cupom.getCodigo(),
+            cupom.getValor(),
+            cupom.getTipo(),
+            cupom.getEstado()
         );
     }
 }

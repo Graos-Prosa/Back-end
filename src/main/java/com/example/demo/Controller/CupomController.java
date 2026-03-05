@@ -1,5 +1,8 @@
 package com.example.demo.Controller;
 
+import com.example.demo.DTO.CupomCreateDTO;
+import com.example.demo.DTO.CupomDTO;
+import com.example.demo.DTO.CupomUpdateDTO;
 import com.example.demo.Model.Cupom;
 import com.example.demo.Service.CupomService;
 import org.springframework.web.bind.annotation.*;
@@ -18,26 +21,23 @@ public class CupomController {
     }
 
     @GetMapping("/{id}")
-    public Cupom findById(@PathVariable Long id) {
+    public CupomDTO findById(@PathVariable Long id) {
         return cupomService.findById(id);
     }
 
     @GetMapping
-    public List<Cupom> findAll() {
+    public List<CupomDTO> findAll() {
         return cupomService.findAll();
     }
 
     @PostMapping
-    public Cupom create(@RequestBody Cupom cupom) {
+    public CupomDTO create(@RequestBody CupomCreateDTO cupom) {
         return cupomService.save(cupom);
     }
 
-    @PutMapping("/{id}")
-    public Cupom update( @PathVariable Long id, @RequestBody Cupom cupom) { return cupomService.update(id, cupom);}
-
     @PatchMapping("/{id}")
-    public Cupom updatePartial(@PathVariable Long id, @RequestBody Cupom cupom) {
-        return cupomService.updatePartial(id, cupom);
+    public CupomDTO update(@PathVariable Long id, @RequestBody CupomUpdateDTO cupom) {
+        return cupomService.update(id, cupom);
     }
 
     //implementar autenticação de delete

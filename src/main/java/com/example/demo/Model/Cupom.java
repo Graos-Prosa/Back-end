@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.example.demo.DTO.CupomCreateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,4 +27,11 @@ public class Cupom {
     private String tipo;
     @Column(name = "estado", nullable = false , length = 50)
     private enumCupom estado;
+
+    public Cupom(CupomCreateDTO cupom) {
+        this.codigo = cupom.codigo();
+        this.valor = cupom.valor();
+        this.tipo = cupom.tipo();
+        this.estado = cupom.estado();
+    }
 }

@@ -1,5 +1,8 @@
 package com.example.demo.Service.Implement;
 
+import com.example.demo.DTO.CupomCreateDTO;
+import com.example.demo.DTO.CupomDTO;
+import com.example.demo.DTO.CupomUpdateDTO;
 import com.example.demo.Model.Cupom;
 import com.example.demo.Model.Item;
 import com.example.demo.Repository.CupomRepository;
@@ -7,6 +10,7 @@ import com.example.demo.Service.CupomService;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,50 +23,52 @@ public class CupomServiceImpl implements CupomService {
     }
 
     @Override
-    public Cupom findById(Long id) {
-        return cupomRepository.findById(id)
+    public CupomDTO findById(Long id) {
+        Cupom cupom =  cupomRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cupom não encontrado."));
+
+        return new CupomDTO(cupom);
     }
 
     @Override
-    public List<Cupom> findAll() {
-        return cupomRepository.findAll();
+    public List<CupomDTO> findAll() {
+        List<Cupom> cupons = cupomRepository.findAll();
+        List<CupomDTO> cupomDTOS = new ArrayList<>();
+        for (Cupom cupom : cupons) {
+            cupomDTOS.add(new CupomDTO(cupom));
+        }
+
+        return cupomDTOS;
     }
 
     @Override
-    public Cupom save(Cupom cupom) {
-        return cupomRepository.save(cupom);
-    }
-
-    //implementar metodo de update
-    @Override
-    public Cupom update(Long id, Cupom cupom) {
-        return null;
+    public CupomDTO save(CupomCreateDTO dto) {
+        Cupom cupom = new Cupom(dto);
+        return new CupomDTO(cupomRepository.save(cupom));
     }
 
     @Override
-    public Cupom updatePartial(Long id, Cupom novo) {
+    public CupomDTO update(Long id, CupomUpdateDTO novo) {
         Cupom existente = cupomRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cupom não encontrada."));
 
-        if (novo.getCodigo() != null) {
-            existente.setCodigo(novo.getCodigo());
+        if (novo.codigo() != null) {
+            existente.setCodigo(novo.codigo());
         }
 
-        if (novo.getTipo() != null) {
-            existente.setTipo(novo.getTipo());
+        if (novo.tipo() != null) {
+            existente.setTipo(novo.tipo());
         }
 
-        if (novo.getEstado() != null) {
-            existente.setEstado(novo.getEstado());
+        if (novo.estado() != null) {
+            existente.setEstado(novo.estado());
         }
 
-        if (novo.getValor() != null) {
-            existente.setValor(novo.getValor());
+        if (novo.valor() != null) {
+            existente.setValor(novo.valor());
         }
 
-        //melhor retornar o objeto ou null?
-        return cupomRepository.save(existente);
+        return new CupomDTO(cupomRepository.save(existente));
     }
 
 
