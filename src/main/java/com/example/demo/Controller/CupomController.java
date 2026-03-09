@@ -1,13 +1,11 @@
 package com.example.demo.Controller;
 
-import com.example.demo.DTO.CupomCreateDTO;
-import com.example.demo.DTO.CupomDTO;
-import com.example.demo.DTO.CupomUpdateDTO;
-import com.example.demo.Model.Cupom;
+import com.example.demo.DTO.Cupom.CupomCreateDTO;
+import com.example.demo.DTO.Cupom.CupomDTO;
+import com.example.demo.DTO.Cupom.CupomUpdateDTO;
 import com.example.demo.Service.CupomService;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @RestController

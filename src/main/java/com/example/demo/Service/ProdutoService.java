@@ -1,11 +1,9 @@
 package com.example.demo.Service;
 
-import com.example.demo.DTO.ProdutoCreateDTO;
-import com.example.demo.DTO.ProdutoDTO;
-import com.example.demo.DTO.ProdutoUpdateDTO;
-import com.example.demo.Model.Produto;
+import com.example.demo.DTO.Produto.ProdutoCreateDTO;
+import com.example.demo.DTO.Produto.ProdutoDTO;
+import com.example.demo.DTO.Produto.ProdutoUpdateDTO;
 
-import java.math.BigInteger;
 import java.util.List;
 
 public interface ProdutoService {

@@ -1,9 +1,8 @@
 package com.example.demo.Controller;
 
-import com.example.demo.DTO.CredencialCreateDTO;
-import com.example.demo.DTO.CredencialDTO;
-import com.example.demo.DTO.CredencialUpdateDTO;
-import com.example.demo.Model.Credencial;
+import com.example.demo.DTO.Credencial.CredencialCreateDTO;
+import com.example.demo.DTO.Credencial.CredencialDTO;
+import com.example.demo.DTO.Credencial.CredencialUpdateDTO;
 import com.example.demo.Service.CredencialService;
 import org.springframework.web.bind.annotation.*;
 

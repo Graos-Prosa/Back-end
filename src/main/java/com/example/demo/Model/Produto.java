@@ -1,10 +1,9 @@
 package com.example.demo.Model;
 
-import com.example.demo.DTO.ProdutoCreateDTO;
+import com.example.demo.DTO.Produto.ProdutoCreateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "produto")

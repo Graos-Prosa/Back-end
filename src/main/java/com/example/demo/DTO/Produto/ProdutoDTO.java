@@ -1,4 +1,4 @@
-package com.example.demo.DTO;
+package com.example.demo.DTO.Produto;
 
 import com.example.demo.Model.Produto;
 

@@ -1,8 +1,8 @@
 package com.example.demo.Service.Implement;
 
-import com.example.demo.DTO.CredencialCreateDTO;
-import com.example.demo.DTO.CredencialDTO;
-import com.example.demo.DTO.CredencialUpdateDTO;
+import com.example.demo.DTO.Credencial.CredencialCreateDTO;
+import com.example.demo.DTO.Credencial.CredencialDTO;
+import com.example.demo.DTO.Credencial.CredencialUpdateDTO;
 import com.example.demo.DTO.LoginRespostaDTO;
 import com.example.demo.Model.Credencial;
 import com.example.demo.Repository.CredencialRepository;

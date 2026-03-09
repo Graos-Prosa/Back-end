@@ -1,15 +1,13 @@
 package com.example.demo.Service.Implement;
 
-import com.example.demo.DTO.CupomCreateDTO;
-import com.example.demo.DTO.CupomDTO;
-import com.example.demo.DTO.CupomUpdateDTO;
+import com.example.demo.DTO.Cupom.CupomCreateDTO;
+import com.example.demo.DTO.Cupom.CupomDTO;
+import com.example.demo.DTO.Cupom.CupomUpdateDTO;
 import com.example.demo.Model.Cupom;
-import com.example.demo.Model.Item;
 import com.example.demo.Repository.CupomRepository;
 import com.example.demo.Service.CupomService;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 

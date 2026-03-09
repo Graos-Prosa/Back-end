@@ -1,6 +1,5 @@
-package com.example.demo.DTO;
+package com.example.demo.DTO.Credencial;
 
-import com.example.demo.Model.Credencial;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 

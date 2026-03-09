@@ -1,11 +1,9 @@
 package com.example.demo.Service;
 
-import com.example.demo.DTO.UsuarioCreateDTO;
-import com.example.demo.DTO.UsuarioDTO;
-import com.example.demo.DTO.UsuarioUpdateDTO;
-import com.example.demo.Model.Usuario;
+import com.example.demo.DTO.Usuario.UsuarioCreateDTO;
+import com.example.demo.DTO.Usuario.UsuarioDTO;
+import com.example.demo.DTO.Usuario.UsuarioUpdateDTO;
 
-import java.math.BigInteger;
 import java.util.List;
 
 public interface UsuarioService {
