@@ -1,4 +1,4 @@
-package com.example.demo.DTO;
+package com.example.demo.DTO.Endereco;
 
 import com.example.demo.Model.Endereco;
 

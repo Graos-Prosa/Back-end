@@ -1,4 +1,4 @@
-package com.example.demo.DTO;
+package com.example.demo.DTO.Cupom;
 
 import com.example.demo.Model.enumCupom;
 import java.math.BigDecimal;

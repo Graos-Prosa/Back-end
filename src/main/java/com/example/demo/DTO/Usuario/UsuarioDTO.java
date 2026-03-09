@@ -1,5 +1,6 @@
-package com.example.demo.DTO;
+package com.example.demo.DTO.Usuario;
 
+import com.example.demo.DTO.Endereco.EnderecoDTO;
 import com.example.demo.Model.Usuario;
 
 import java.time.LocalDate;

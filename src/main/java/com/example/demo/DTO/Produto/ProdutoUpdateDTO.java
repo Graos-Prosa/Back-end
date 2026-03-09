@@ -1,6 +1,4 @@
-package com.example.demo.DTO;
-
-import com.example.demo.Model.Produto;
+package com.example.demo.DTO.Produto;
 
 import java.math.BigDecimal;
 

@@ -1,14 +1,13 @@
 package com.example.demo.Service.Implement;
 
-import com.example.demo.DTO.UsuarioCreateDTO;
-import com.example.demo.DTO.UsuarioDTO;
-import com.example.demo.DTO.UsuarioUpdateDTO;
+import com.example.demo.DTO.Usuario.UsuarioCreateDTO;
+import com.example.demo.DTO.Usuario.UsuarioDTO;
+import com.example.demo.DTO.Usuario.UsuarioUpdateDTO;
 import com.example.demo.Model.Usuario;
 import com.example.demo.Repository.UsuarioRepository;
 import com.example.demo.Service.UsuarioService;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 

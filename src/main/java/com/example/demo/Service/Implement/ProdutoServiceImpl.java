@@ -1,14 +1,13 @@
 package com.example.demo.Service.Implement;
 
-import com.example.demo.DTO.ProdutoCreateDTO;
-import com.example.demo.DTO.ProdutoDTO;
-import com.example.demo.DTO.ProdutoUpdateDTO;
+import com.example.demo.DTO.Produto.ProdutoCreateDTO;
+import com.example.demo.DTO.Produto.ProdutoDTO;
+import com.example.demo.DTO.Produto.ProdutoUpdateDTO;
 import com.example.demo.Model.Produto;
 import com.example.demo.Repository.ProdutoRepository;
 import com.example.demo.Service.ProdutoService;
 import org.springframework.stereotype.Service;
 
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 

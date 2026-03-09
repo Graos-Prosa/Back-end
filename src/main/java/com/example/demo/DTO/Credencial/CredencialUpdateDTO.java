@@ -1,6 +1,4 @@
-package com.example.demo.DTO;
-
-import jakarta.validation.constraints.NotBlank;
+package com.example.demo.DTO.Credencial;
 
 public record CredencialUpdateDTO(
         String email,

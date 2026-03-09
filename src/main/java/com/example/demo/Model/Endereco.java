@@ -1,9 +1,8 @@
 package com.example.demo.Model;
 
-import com.example.demo.DTO.EnderecoCreateDTO;
+import com.example.demo.DTO.Endereco.EnderecoCreateDTO;
 import jakarta.persistence.*;
 import lombok.*;
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "endereco")

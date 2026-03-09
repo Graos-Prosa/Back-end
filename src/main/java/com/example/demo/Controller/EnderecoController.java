@@ -1,14 +1,11 @@
 package com.example.demo.Controller;
 
-import com.example.demo.DTO.EnderecoCreateDTO;
-import com.example.demo.DTO.EnderecoDTO;
-import com.example.demo.DTO.EnderecoUpdateDTO;
-import com.example.demo.Model.Credencial;
-import com.example.demo.Model.Endereco;
+import com.example.demo.DTO.Endereco.EnderecoCreateDTO;
+import com.example.demo.DTO.Endereco.EnderecoDTO;
+import com.example.demo.DTO.Endereco.EnderecoUpdateDTO;
 import com.example.demo.Service.EnderecoService;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigInteger;
 import java.util.List;
 
 @RestController
