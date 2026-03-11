@@ -3,7 +3,7 @@ package com.example.demo.Service.Implement;
 import com.example.demo.DTO.Cupom.CupomCreateDTO;
 import com.example.demo.DTO.Cupom.CupomDTO;
 import com.example.demo.DTO.Cupom.CupomUpdateDTO;
-import com.example.demo.Exception.RecursoNaoEncontradoExcecao;
+import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.Model.Cupom;
 import com.example.demo.Repository.CupomRepository;
 import com.example.demo.Service.CupomService;
@@ -24,7 +24,7 @@ public class CupomServiceImpl implements CupomService {
     @Override
     public CupomDTO findById(Long id) {
         Cupom cupom =  cupomRepository.findById(id)
-                .orElseThrow(() -> new RecursoNaoEncontradoExcecao("Cupom não encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Cupom não encontrado"));
 
         return new CupomDTO(cupom);
     }
@@ -49,7 +49,7 @@ public class CupomServiceImpl implements CupomService {
     @Override
     public CupomDTO update(Long id, CupomUpdateDTO novo) {
         Cupom existente = cupomRepository.findById(id)
-                .orElseThrow(() -> new RecursoNaoEncontradoExcecao("Cupom não encontrado"));
+                .orElseThrow(() -> new ResourceNotFoundException("Cupom não encontrado"));
 
         if (novo.codigo() != null) {
             existente.setCodigo(novo.codigo());

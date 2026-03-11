@@ -13,6 +13,7 @@ import java.util.List;
 @RequestMapping("/usuario")
 public class UsuarioController {
 
+
     private final UsuarioService usuarioService;
 
     public UsuarioController(UsuarioService usuarioService) {
