@@ -95,7 +95,7 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     public List<PedidoDTO> buscarPorUsuario(Long idUsuario) {
-        List<Pedido> pedidos = pedidoRepository.findByIdUsuario(idUsuario);
+        List<Pedido> pedidos = pedidoRepository.findByUsuarioIdUsuario(idUsuario);
         List<PedidoDTO> pedidosDTOS = new ArrayList<>();
         for (Pedido pedido : pedidos) {
             pedidosDTOS.add(new PedidoDTO(pedido));

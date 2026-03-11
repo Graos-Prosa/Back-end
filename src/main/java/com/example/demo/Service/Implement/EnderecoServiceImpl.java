@@ -105,7 +105,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     @Override
     public List<EnderecoDTO> buscarPorUsuario(Long idUsuario) {
-        List<Endereco> enderecos = enderecoRepository.findByIdUsuario(idUsuario);
+        List<Endereco> enderecos = enderecoRepository.findByUsuarioIdUsuario(idUsuario);
         List<EnderecoDTO> enderecosDTOS = new ArrayList<>();
         for (Endereco endereco : enderecos) {
             enderecosDTOS.add(new EnderecoDTO(endereco));

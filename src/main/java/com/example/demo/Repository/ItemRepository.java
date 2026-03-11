@@ -7,5 +7,5 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
-    List<Item> findByIdPedido(Long pedidoId);
+    List<Item> findByPedidoIdPedido(Long pedidoId);
 }

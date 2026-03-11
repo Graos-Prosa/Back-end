@@ -85,7 +85,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<ItemDTO> buscarPorPedido(Long idPedido) {
-        List<Item> itens = itemRepository.findByIdPedido(idPedido);
+        List<Item> itens = itemRepository.findByPedidoIdPedido(idPedido);
         List<ItemDTO> itensDTOS = new ArrayList<>();
         for (Item item : itens) {
             itensDTOS.add(new ItemDTO(item));

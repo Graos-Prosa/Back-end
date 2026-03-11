@@ -7,5 +7,5 @@ import java.math.BigInteger;
 import java.util.List;
 
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
-    List<Pedido> findByIdUsuario(Long usuarioId);
+    List<Pedido> findByUsuarioIdUsuario(Long usuarioId);
 }
