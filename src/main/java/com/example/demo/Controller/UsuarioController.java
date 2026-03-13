@@ -37,11 +37,6 @@ public class UsuarioController {
         return usuarioService.findAll();
     }
 
-    @PostMapping
-    public UsuarioDTO create(@RequestBody @Valid UsuarioCreateDTO dto) {
-        return usuarioService.save(dto);
-    }
-
     @PutMapping("/{id}")
     public UsuarioDTO update(@PathVariable Long id, @RequestBody @Valid UsuarioUpdateDTO dto) {
         return usuarioService.update(id, dto);

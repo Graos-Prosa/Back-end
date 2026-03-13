@@ -3,8 +3,6 @@ package com.example.demo.Service.Implement;
 import com.example.demo.DTO.Credencial.CredencialCreateDTO;
 import com.example.demo.DTO.Credencial.CredencialDTO;
 import com.example.demo.DTO.Credencial.CredencialUpdateDTO;
-import com.example.demo.DTO.Login.LoginRequestDTO;
-import com.example.demo.DTO.Login.LoginRespostaDTO;
 import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.Model.Credencial;
 import com.example.demo.Repository.CredencialRepository;
@@ -16,24 +14,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CredencialServiceImpl implements CredencialService {
 
     private final CredencialRepository credencialRepository;
 
-    //Esse autowired é porque essa classe é de config e tem o @bean, ou seja, ela é gerenciada pelo Spring
-    //framework, e eu preciso dessa anotação para pedir ao spring que injete ele
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    private final JwtService jwtService;
 
     @Autowired
     public CredencialServiceImpl(CredencialRepository credencialRepository, JwtService jwtService) {
         this.credencialRepository = credencialRepository;
-        this.jwtService = jwtService;
     }
 
     //Esses @Override em cima dos métodos é pra dizer olha, estou usando esse método que está na interface
@@ -62,7 +54,6 @@ public class CredencialServiceImpl implements CredencialService {
         return credenciaisDTOS;
     }
 
-    //o service recebe em DTO e converte pra entidade, mas retorna em DTO novamente
     @Override
     public CredencialDTO save(CredencialCreateDTO dto) {
         Credencial credencial = new Credencial();
@@ -94,30 +85,5 @@ public class CredencialServiceImpl implements CredencialService {
     @Override
     public void delete(Long id) {
         credencialRepository.deleteById(id);
-    }
-
-    @Override
-    public LoginRespostaDTO verificarAutenticidade(LoginRequestDTO login) {
-
-        Optional<Credencial> existente = credencialRepository.findByEmail(login.email());
-
-        if (existente.isEmpty()) {
-            return new LoginRespostaDTO(false, "Usuário não encontrado.", null, null);
-        }
-
-        //esse .get() pega o objeto credencial dentro do optional
-        Credencial credencialExistente = existente.get();
-
-        //esse matches compara a senha hash salva no banco com o hash da senha digitada
-        if (!passwordEncoder.matches(login.senha(), credencialExistente.getSenha())) {
-            return new LoginRespostaDTO(false, "Senha inválida", null, null);
-        }
-
-        String token = jwtService.gerarToken(credencialExistente);
-
-        return new LoginRespostaDTO(true,
-                "Login efetuado com sucesso!",
-                new CredencialDTO(credencialExistente),
-                token);
     }
 }
