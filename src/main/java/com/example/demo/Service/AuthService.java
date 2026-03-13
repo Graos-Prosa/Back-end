@@ -8,5 +8,5 @@ import com.example.demo.DTO.Credencial.CredencialDTO;
 public interface AuthService {
 
     public LoginRespostaDTO verificarAutenticidade(LoginRequestDTO login);
-
+    //public LoginRespostaDTO registrar(RegistroRequestDTO registro);
 }

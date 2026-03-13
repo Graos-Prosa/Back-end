@@ -7,7 +7,7 @@ import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.Model.Credencial;
 import com.example.demo.Repository.CredencialRepository;
 import com.example.demo.Service.CredencialService;
-import com.example.demo.Service.JwtService;
+import com.example.demo.Service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class CredencialServiceImpl implements CredencialService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public CredencialServiceImpl(CredencialRepository credencialRepository, JwtService jwtService) {
+    public CredencialServiceImpl(CredencialRepository credencialRepository, TokenService jwtService) {
         this.credencialRepository = credencialRepository;
     }
 

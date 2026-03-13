@@ -24,9 +24,9 @@ public class AuthController {
     }
 
     //@Valid funciona para o controller validar as anotações colocadas nos DTOs
-    @PostMapping
-    public CredencialDTO create(@RequestBody @Valid CredencialCreateDTO credencial) {
-        return authService.save(credencial);
+    @PostMapping("/registro")
+    public LoginRespostaDTO registro(@RequestBody @Valid RegistroRequestDTO registroRequestDTO) {
+        return null;
     }
 
     @PostMapping("/login")

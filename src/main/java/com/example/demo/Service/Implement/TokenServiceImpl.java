@@ -1,7 +1,7 @@
 package com.example.demo.Service.Implement;
 
 import com.example.demo.Model.Credencial;
-import com.example.demo.Service.JwtService;
+import com.example.demo.Service.TokenService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Map;
 
 @Service
-public class JwtServiceImpl implements JwtService {
+public class TokenServiceImpl implements TokenService {
 
     @Value("${jwt.secret}") // usa a senha que está na ..env e especificada em application.properties
     private String SECRET_KEY;
