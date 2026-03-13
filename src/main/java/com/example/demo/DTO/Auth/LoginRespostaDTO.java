@@ -1,4 +1,4 @@
-package com.example.demo.DTO.Login;
+package com.example.demo.DTO.Auth;
 
 import com.example.demo.DTO.Credencial.CredencialDTO;
 
