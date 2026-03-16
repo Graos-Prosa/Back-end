@@ -21,12 +21,23 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
+        //desativa proteção dos endpoints
+        /*
         http.csrf(csrf -> csrf.disable()) // desativa proteção CSRF (usado em APIs)
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().permitAll() // permite qualquer requisição
                 )
                 .httpBasic(httpBasic -> httpBasic.disable()) // desativa login basic
                 .formLogin(form -> form.disable()); // desativa tela de login
+    */
+
+        //ativa proteção dos endpoints exceto de autenticação
+        http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/autenticacao/**").permitAll()
+                        .anyRequest().authenticated()
+                );
+
 
         return http.build();
     }
