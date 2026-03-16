@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.DTO.Auth.LoginRequestDTO;
 import com.example.demo.DTO.Auth.LoginRespostaDTO;
+import com.example.demo.DTO.Auth.RegistroRequestDTO;
 import com.example.demo.DTO.Credencial.CredencialCreateDTO;
 import com.example.demo.DTO.Credencial.CredencialDTO;
 import com.example.demo.Service.AuthService;
@@ -26,7 +27,7 @@ public class AuthController {
     //@Valid funciona para o controller validar as anotações colocadas nos DTOs
     @PostMapping("/registro")
     public LoginRespostaDTO registro(@RequestBody @Valid RegistroRequestDTO registroRequestDTO) {
-        return null;
+        return authService.registrar(registroRequestDTO);
     }
 
     @PostMapping("/login")
