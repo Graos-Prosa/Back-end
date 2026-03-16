@@ -70,7 +70,7 @@ public class CredencialServiceImpl implements CredencialService {
                 .orElseThrow(() -> new ResourceNotFoundException("Credencial não encontrado"));
 
         if (dto.senha() != null) {
-            existente.setSenha(dto.senha());
+            existente.setSenha(passwordEncoder.encode(dto.senha()));
         }
 
         if (dto.email() != null ) {

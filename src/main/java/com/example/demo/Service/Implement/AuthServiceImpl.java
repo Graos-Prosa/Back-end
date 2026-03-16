@@ -57,7 +57,7 @@ public class AuthServiceImpl implements AuthService {
 
         return new LoginRespostaDTO(true,
                 "Login efetuado com sucesso!",
-                new CredencialDTO(credencial),
+                new CredencialDTO(credencialSalva),
                 token);
     }
 
