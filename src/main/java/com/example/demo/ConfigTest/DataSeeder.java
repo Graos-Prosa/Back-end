@@ -3,6 +3,7 @@ package com.example.demo.ConfigTest;
 import com.example.demo.DTO.Credencial.CredencialCreateDTO;
 import com.example.demo.DTO.Cupom.CupomCreateDTO;
 import com.example.demo.DTO.Endereco.EnderecoCreateDTO;
+import com.example.demo.DTO.Pedido.PedidoCreateDTO;
 import com.example.demo.DTO.Produto.ProdutoCreateDTO;
 import com.example.demo.DTO.Usuario.UsuarioCreateDTO;
 import com.example.demo.Model.*;
@@ -15,6 +16,7 @@ import org.springframework.core.annotation.Order;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Configuration
 public class DataSeeder {
@@ -181,6 +183,33 @@ public class DataSeeder {
                 cupom = modelMapper.map(cupomDTO, Cupom.class);
                 cupomRepository.save(cupom);
 
+            }
+        };
+    }
+    @Bean
+    @Order(6)
+    CommandLineRunner seedPedido(PedidoRepository pedidoRepository, ModelMapper modelMapper) {
+        return args -> {
+            if (pedidoRepository.count() == 0) {
+                PedidoCreateDTO pedidoDTO = new PedidoCreateDTO(1L, null,"PENDENTE",null, LocalDateTime.now(),new BigDecimal("200.00"), new BigDecimal("200.00"));
+                Pedido pedido = modelMapper.map(pedidoDTO, Pedido.class);
+                pedidoRepository.save(pedido);
+
+                pedidoDTO = new PedidoCreateDTO(1L, null,"CONFIRMADO",null, LocalDateTime.now(),new BigDecimal("50.00"), new BigDecimal("50.00"));
+                pedido = modelMapper.map(pedidoDTO, Pedido.class);
+                pedidoRepository.save(pedido);
+
+                pedidoDTO = new PedidoCreateDTO(2L, null,"CONFIRMADO",null, LocalDateTime.now(),new BigDecimal("150.00.00"), new BigDecimal("150.00.00"));
+                pedido = modelMapper.map(pedidoDTO, Pedido.class);
+                pedidoRepository.save(pedido);
+
+                pedidoDTO = new PedidoCreateDTO(4L, null,"ENVIADO",null, LocalDateTime.now(),new BigDecimal("300.00.00"), new BigDecimal("300.00.00"));
+                pedido = modelMapper.map(pedidoDTO, Pedido.class);
+                pedidoRepository.save(pedido);
+
+                pedidoDTO = new PedidoCreateDTO(5L, null,"CANCELADO",null, LocalDateTime.now(),new BigDecimal("99.00"), new BigDecimal("99.00"));
+                pedido = modelMapper.map(pedidoDTO, Pedido.class);
+                pedidoRepository.save(pedido);
             }
         };
     }
