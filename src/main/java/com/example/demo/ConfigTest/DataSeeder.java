@@ -1,10 +1,13 @@
 package com.example.demo.ConfigTest;
 
 import com.example.demo.DTO.Credencial.CredencialCreateDTO;
+import com.example.demo.DTO.Endereco.EnderecoCreateDTO;
 import com.example.demo.DTO.Usuario.UsuarioCreateDTO;
 import com.example.demo.Model.Credencial;
+import com.example.demo.Model.Endereco;
 import com.example.demo.Model.Usuario;
 import com.example.demo.Repository.CredencialRepository;
+import com.example.demo.Repository.EnderecoRepository;
 import com.example.demo.Repository.UsuarioRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
@@ -67,6 +70,34 @@ public class DataSeeder {
                 credencialDTO = new CredencialCreateDTO("lucas.pereira@gmail.com", "1234567890");
                 credencial = modelMapper.map(credencialDTO, Credencial.class);
                 credencialRepository.save(credencial);
+            }
+        };
+    }
+    @Bean
+    @Order(3)
+    CommandLineRunner seedEndereco(EnderecoRepository enderecoRepository, ModelMapper modelMapper) {
+        return args -> {
+            if (enderecoRepository.count() == 0) {
+                EnderecoCreateDTO enderecoDTO = new EnderecoCreateDTO(1L, "Rua das Flores",123,"Apto 101","Próximo à padaria","Centro","20000-000","Rio de Janeiro","RJ","Brasil");
+                Endereco endereco = modelMapper.map(enderecoDTO, Endereco.class);
+                enderecoRepository.save(endereco);
+
+                enderecoDTO = new EnderecoCreateDTO(2L, "Avenida Paulista",1578,"Sala 305",null,"Bela Vista","01310-200","São Paulo","SP","Brasil");
+                endereco = modelMapper.map(enderecoDTO, Endereco.class);
+                enderecoRepository.save(endereco);
+
+                enderecoDTO = new EnderecoCreateDTO(3L, "Rua XV de Novembro",45,null,"Ao lado da farmácia","Centro Histórico","80020-310","Curitiba","PR","Brasil");
+                endereco = modelMapper.map(enderecoDTO, Endereco.class);
+                enderecoRepository.save(endereco);
+
+                enderecoDTO = new EnderecoCreateDTO(2L, "Rua das Acácias",890,"Casa","Próximo ao parque","Jardim Primavera","13050-000","Campinas","SP","Brasil");
+                endereco = modelMapper.map(enderecoDTO, Endereco.class);
+                enderecoRepository.save(endereco);
+
+                enderecoDTO = new EnderecoCreateDTO(4L, "Travessa do Comércio",12,"Fundos",null,"Comércio","40015-320","Salvador","BA","Brasil");
+                endereco = modelMapper.map(enderecoDTO, Endereco.class);
+                enderecoRepository.save(endereco);
+
             }
         };
     }
