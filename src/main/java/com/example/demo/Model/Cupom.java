@@ -24,6 +24,7 @@ public class Cupom {
     private BigDecimal valor;
     @Column(name = "tipo", nullable = false , length = 50)
     private String tipo;
+    @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false , length = 50)
     private enumCupom estado;
 

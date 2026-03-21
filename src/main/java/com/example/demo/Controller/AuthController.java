@@ -1,17 +1,17 @@
 package com.example.demo.Controller;
 
 
+import com.example.demo.DTO.Auth.LoginGoogleDTO;
 import com.example.demo.DTO.Auth.LoginRequestDTO;
 import com.example.demo.DTO.Auth.LoginRespostaDTO;
 import com.example.demo.DTO.Auth.RegistroRequestDTO;
-import com.example.demo.DTO.Credencial.CredencialCreateDTO;
-import com.example.demo.DTO.Credencial.CredencialDTO;
-import com.example.demo.DTO.Usuario.UsuarioDTO;
 import com.example.demo.Model.Credencial;
+import com.example.demo.DTO.Auth.GoogleUserData;
+import com.example.demo.Repository.CredencialRepository;
 import com.example.demo.Service.AuthService;
-import com.example.demo.Service.CredencialService;
+import com.example.demo.Service.GoogleService;
+import com.example.demo.Service.TokenService;
 import jakarta.validation.Valid;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,9 +19,15 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
+    private final CredencialRepository credencialRepository;
+    private final GoogleService googleService;
+    private final TokenService tokenService;
 
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, CredencialRepository credencialRepository, GoogleService googleService, TokenService tokenService) {
         this.authService = authService;
+        this.credencialRepository = credencialRepository;
+        this.googleService = googleService;
+        this.tokenService = tokenService;
     }
 
     //@Valid funciona para o controller validar as anotações colocadas nos DTOs
@@ -33,6 +39,19 @@ public class AuthController {
     @PostMapping("/login")
     public LoginRespostaDTO login(@RequestBody @Valid LoginRequestDTO dto) {
         return authService.verificarAutenticidade(dto);
+    }
+
+    @PostMapping("/auth/google")
+    public LoginRespostaDTO loginGoogle(@RequestBody LoginGoogleDTO dto) {
+
+        GoogleUserData data = googleService.validarToken(dto.token());
+
+        Credencial credencial = credencialRepository.findByEmail(data.email())
+                .orElseGet(() -> criarUsuarioGoogle(data));
+
+        String token = tokenService.gerarToken(credencial);
+
+        return new LoginRespostaDTO(token);
     }
 
     /* decidir se isso vai ficar assim

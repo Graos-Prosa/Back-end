@@ -1,9 +1,9 @@
 package com.example.demo.Model;
 
+import com.example.demo.DTO.Auth.GoogleUserData;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigInteger;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -36,4 +36,7 @@ public class Credencial {
     private String senha;
     @Column(name = "criado_em", nullable = false)
     private LocalDateTime criado_em;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "provedor", nullable = false)
+    private AuthProvedor provedor = AuthProvedor.LOCAL;
 }
