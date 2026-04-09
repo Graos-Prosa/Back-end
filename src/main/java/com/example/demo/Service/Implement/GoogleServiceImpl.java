@@ -29,10 +29,9 @@ public class GoogleServiceImpl implements GoogleService {
     private final CredencialRepository credencialRepository;
     private final TokenService tokenService;
 
-    public GoogleServiceImpl(UsuarioRepository usuarioRepository, CredencialRepository credencialRepository, GoogleService googleService, TokenService tokenService) {
+    public GoogleServiceImpl(UsuarioRepository usuarioRepository, CredencialRepository credencialRepository, TokenService tokenService) {
         this.usuarioRepository = usuarioRepository;
         this.credencialRepository = credencialRepository;
-        this.googleService = googleService;
         this.tokenService = tokenService;
     }
 

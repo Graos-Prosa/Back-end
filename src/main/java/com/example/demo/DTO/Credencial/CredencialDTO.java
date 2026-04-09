@@ -1,6 +1,8 @@
 package com.example.demo.DTO.Credencial;
 
 import com.example.demo.Model.Credencial;
+import com.example.demo.Model.Role;
+
 import java.util.List;
 
 public record CredencialDTO(
@@ -8,7 +10,7 @@ public record CredencialDTO(
         String email,
         String nome,
         String sobrenome,
-        List<String> roles
+        List<Role> roles
 ) {
     //construtor auxiliar para converter a o objeto credencial no DTO
     public CredencialDTO(Credencial credencial) {

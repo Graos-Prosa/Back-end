@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
+    private final CredencialRepository credencialRepository;
     private final GoogleService googleService;
+    private final TokenService tokenService;
 
     public AuthController(AuthService authService, CredencialRepository credencialRepository, GoogleService googleService, TokenService tokenService) {
         this.authService = authService;
