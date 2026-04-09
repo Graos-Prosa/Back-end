@@ -19,7 +19,7 @@ public class Produto {
     private Long idProduto;
     @Column(name = "titulo", nullable = false , length = 100)
     private String titulo;
-    @Column(name = "descricao", nullable = false , length = 512)
+    @Column(name = "descricao", nullable = false , length = 1024)
     private String descricao;
     @Column(name = "imagem", nullable = false)
     private String imagemUrl;
