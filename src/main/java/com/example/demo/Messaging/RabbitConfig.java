@@ -1,0 +1,70 @@
+package com.example.demo.Messaging;
+
+import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class RabbitConfig {
+    @Bean
+    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
+        RabbitAdmin admin = new RabbitAdmin(connectionFactory);
+        admin.setAutoStartup(true);
+        return admin;
+    }
+
+    //Inicializa manualmente o comando de administrador para realizar os comandos do RabbitConfig
+//    @Bean
+//    public CommandLineRunner init(AmqpAdmin admin) {
+//        return args -> {
+//            admin.initialize();
+//        };
+//    }
+
+    @Bean
+    public Queue mensagemQueue() {
+        System.out.println("Criação de Fila -> 'mensagem.fila'");
+        return new Queue("mensagem.fila", true);
+    }
+
+    @Bean
+    public Queue pedidoQueue() {
+        System.out.println("Criação de Fila -> 'pedido.fila'");
+        return new Queue("pedido.fila", true);
+    }
+
+    @Bean
+    public Queue pedidoExpressoQueue() {
+        System.out.println("Criação de Fila -> 'pedidoExpresso.fila'");
+        return new Queue("pedidoExpresso.fila", true);
+    }
+
+    @Bean
+    public DirectExchange exchange() {
+        return new DirectExchange("app.exchange");
+    }
+
+    @Bean
+    public Binding mensagemBinding() {
+        return BindingBuilder.bind(mensagemQueue())
+                .to(exchange())
+                .with("mensagem.fila");
+    }
+
+    @Bean
+    public Binding pedidoBinding() {
+        return BindingBuilder.bind(pedidoQueue())
+                .to(exchange())
+                .with("pedido.fila");
+    }
+
+    @Bean
+    public Binding pedidoExpressoBinding() {
+        return BindingBuilder.bind(pedidoExpressoQueue())
+                .to(exchange())
+                .with("pedidoExpresso.fila");
+    }
+}
