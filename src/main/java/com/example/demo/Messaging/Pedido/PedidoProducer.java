@@ -1,12 +1,12 @@
 package com.example.demo.Messaging.Pedido;
 
 import com.example.demo.Messaging.MessageProducer;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PedidoProducer {
     public static final String QUEUE_PEDIDO = "pedido.fila";
+    public static final String QUEUE_PEDIDOEXPRESSO = "pedidoExpresso.fila";
     private final MessageProducer messageProducer;
 
     public PedidoProducer(MessageProducer messageProducer) {
@@ -16,5 +16,10 @@ public class PedidoProducer {
     public void enviarMensagemPedido(Object message) {
         System.out.print("Pedido Criado - " + message.toString());
         messageProducer.enviarMensagem(QUEUE_PEDIDO, message);
+    }
+
+    public void enviarMensagemPedidoExpresso(Object message) {
+        System.out.print("Pedido Expresso Criado - " + message.toString());
+        messageProducer.enviarMensagem(QUEUE_PEDIDOEXPRESSO, message);
     }
 }

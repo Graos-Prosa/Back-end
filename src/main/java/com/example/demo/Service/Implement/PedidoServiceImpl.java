@@ -67,7 +67,16 @@ public class PedidoServiceImpl implements PedidoService {
         Pedido pedido = new Pedido(dto, cupom, usuario);
         PedidoDTO pedidoSalvo = new PedidoDTO(pedidoRepository.save(pedido));
         pedidoProducer.enviarMensagemPedido(pedidoSalvo);
+        verificarPedidoExpresso(pedidoSalvo);
         return pedidoSalvo;
+    }
+
+    private void verificarPedidoExpresso(PedidoDTO pedido) {
+        //Adicionar expressão para verificar localidade no município do Rio de Janeiro
+        boolean horarioExpresso = pedido.dataPedido().getHour() < 12;
+        if (horarioExpresso) {
+            pedidoProducer.enviarMensagemPedidoExpresso(pedido);
+        }
     }
 
     @Override
