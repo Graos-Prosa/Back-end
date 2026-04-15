@@ -3,26 +3,28 @@ package com.example.demo.Messaging;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.JacksonJsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitConfig {
+
     @Bean
-    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
-        RabbitAdmin admin = new RabbitAdmin(connectionFactory);
-        admin.setAutoStartup(true);
-        return admin;
+    public MessageConverter jsonMessageConverter() {
+        return new JacksonJsonMessageConverter();
     }
 
-    //Inicializa manualmente o comando de administrador para realizar os comandos do RabbitConfig
-//    @Bean
-//    public CommandLineRunner init(AmqpAdmin admin) {
-//        return args -> {
-//            admin.initialize();
-//        };
-//    }
+    @Bean
+    public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
+        RabbitTemplate template = new RabbitTemplate(connectionFactory);
+        template.setMessageConverter(jsonMessageConverter());
+        return template;
+    }
+
 
     @Bean
     public Queue mensagemQueue() {

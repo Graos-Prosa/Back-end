@@ -5,6 +5,7 @@ import com.example.demo.DTO.Pedido.PedidoCreateDTO;
 import com.example.demo.DTO.Pedido.PedidoDTO;
 import com.example.demo.DTO.Pedido.PedidoUpdateDTO;
 import com.example.demo.Exception.ResourceNotFoundException;
+import com.example.demo.Messaging.Pedido.PedidoProducer;
 import com.example.demo.Model.Cupom;
 import com.example.demo.Model.Endereco;
 import com.example.demo.Model.Pedido;
@@ -20,15 +21,16 @@ import java.util.List;
 
 @Service
 public class PedidoServiceImpl implements PedidoService {
-
     private final PedidoRepository pedidoRepository;
     private final UsuarioRepository usuarioRepository;
     private final CupomRepository cupomRepository;
+    private final PedidoProducer pedidoProducer;
 
-    public PedidoServiceImpl(PedidoRepository pedidoRepository, UsuarioRepository usuarioRepository, CupomRepository cupomRepository) {
+    public PedidoServiceImpl(PedidoRepository pedidoRepository, UsuarioRepository usuarioRepository, CupomRepository cupomRepository, PedidoProducer pedidoProducer) {
         this.pedidoRepository = pedidoRepository;
         this.usuarioRepository = usuarioRepository;
         this.cupomRepository = cupomRepository;
+        this.pedidoProducer = pedidoProducer;
     }
 
     @Override
@@ -63,7 +65,9 @@ public class PedidoServiceImpl implements PedidoService {
         }
 
         Pedido pedido = new Pedido(dto, cupom, usuario);
-        return new PedidoDTO(pedidoRepository.save(pedido));
+        PedidoDTO pedidoSalvo = new PedidoDTO(pedidoRepository.save(pedido));
+        pedidoProducer.enviarMensagemPedido(pedidoSalvo);
+        return pedidoSalvo;
     }
 
     @Override
