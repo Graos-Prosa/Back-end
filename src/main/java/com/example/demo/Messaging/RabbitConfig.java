@@ -45,6 +45,12 @@ public class RabbitConfig {
     }
 
     @Bean
+    public Queue pagamentoQueue() {
+        System.out.println("Criação de Fila -> 'mensagem.pagamento'");
+        return new Queue("pagamento.fila", true);
+    }
+
+    @Bean
     public DirectExchange exchange() {
         return new DirectExchange("app.exchange");
     }
@@ -68,5 +74,12 @@ public class RabbitConfig {
         return BindingBuilder.bind(pedidoExpressoQueue())
                 .to(exchange())
                 .with("pedidoExpresso.fila");
+    }
+
+    @Bean
+    public Binding pagamentoExpressoBinding() {
+        return BindingBuilder.bind(pagamentoQueue())
+                .to(exchange())
+                .with("pagamento.fila");
     }
 }
