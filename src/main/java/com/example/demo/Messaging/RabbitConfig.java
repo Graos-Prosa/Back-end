@@ -39,12 +39,6 @@ public class RabbitConfig {
     }
 
     @Bean
-    public Queue pedidoExpressoQueue() {
-        System.out.println("Criação de Fila -> 'pedidoExpresso.fila'");
-        return new Queue("pedidoExpresso.fila", true);
-    }
-
-    @Bean
     public Queue pagamentoQueue() {
         System.out.println("Criação de Fila -> 'mensagem.pagamento'");
         return new Queue("pagamento.fila", true);
@@ -67,13 +61,6 @@ public class RabbitConfig {
         return BindingBuilder.bind(pedidoQueue())
                 .to(exchange())
                 .with("pedido.fila");
-    }
-
-    @Bean
-    public Binding pedidoExpressoBinding() {
-        return BindingBuilder.bind(pedidoExpressoQueue())
-                .to(exchange())
-                .with("pedidoExpresso.fila");
     }
 
     @Bean

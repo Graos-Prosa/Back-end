@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class PedidoProducer {
     public static final String QUEUE_PEDIDO = "pedido.fila";
-    public static final String QUEUE_PEDIDOEXPRESSO = "pedidoExpresso.fila";
     private final MessageProducer messageProducer;
 
     public PedidoProducer(MessageProducer messageProducer) {
@@ -17,10 +16,5 @@ public class PedidoProducer {
     public void enviarMensagemPedido(PedidoDTO message) {
         System.out.print("Pedido Criado - " + message.toString());
         messageProducer.enviarMensagem(QUEUE_PEDIDO, message);
-    }
-
-    public void enviarMensagemPedidoExpresso(PedidoDTO message) {
-        System.out.print("Pedido Expresso Criado - " + message.toString());
-        messageProducer.enviarMensagem(QUEUE_PEDIDOEXPRESSO, message);
     }
 }
