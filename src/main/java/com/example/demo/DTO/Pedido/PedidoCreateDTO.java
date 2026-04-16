@@ -16,8 +16,6 @@ public record PedidoCreateDTO(
         @NotBlank(message = "O estado do pedido precisa ser válido.")
         String estado,
         BigDecimal desconto,
-        @NotNull(message = "A data precisa ser válida.")
-        LocalDateTime dataPedido,
         @NotNull(message = "O valor total não pode ser nulo") @Min(value = 0, message = "O valor precisa ser maior ou igual a zero.")
         BigDecimal valorTotal,
         @NotNull(message = "O valor total não pode ser nulo") @Min(value = 0, message = "O valor precisa ser maior ou igual a zero.")

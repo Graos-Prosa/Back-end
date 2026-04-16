@@ -326,7 +326,7 @@ public class DataSeeder {
     CommandLineRunner seedPedido(PedidoRepository pedidoRepository, UsuarioRepository usuarioRepository, EnderecoRepository enderecoRepository, CupomRepository cupomRepository) {
         return args -> {
             if (pedidoRepository.count() == 0) {
-                PedidoCreateDTO pedidoDTO = new PedidoCreateDTO(1L,1L, null, "PENDENTE", null, LocalDateTime.now(), new BigDecimal("200.00"), new BigDecimal("200.00"));
+                PedidoCreateDTO pedidoDTO = new PedidoCreateDTO(1L,1L, null, "PENDENTE", null, new BigDecimal("200.00"), new BigDecimal("200.00"));
                 Usuario usuario = usuarioRepository.findById(pedidoDTO.idUsuario()).orElseThrow();
                 Endereco endereco = enderecoRepository.findById(pedidoDTO.idEndereco()).orElseThrow();
                 Pedido pedido = new Pedido();
@@ -335,12 +335,11 @@ public class DataSeeder {
                 pedido.setCupom(pedidoDTO.idCupom() != null ? cupomRepository.findById(pedidoDTO.idCupom()).orElse(null) : null);
                 pedido.setEstado(pedidoDTO.estado());
                 pedido.setDesconto(pedidoDTO.desconto());
-                pedido.setDataPedido(pedidoDTO.dataPedido());
                 pedido.setValorTotal(pedidoDTO.valorTotal());
                 pedido.setValorFinal(pedidoDTO.valorFinal());
                 pedidoRepository.save(pedido);
 
-                pedidoDTO = new PedidoCreateDTO(1L,1L, null, "CONFIRMADO", null, LocalDateTime.now(), new BigDecimal("50.00"), new BigDecimal("50.00"));
+                pedidoDTO = new PedidoCreateDTO(1L,1L, null, "CONFIRMADO", null, new BigDecimal("50.00"), new BigDecimal("50.00"));
                 usuario = usuarioRepository.findById(pedidoDTO.idUsuario()).orElseThrow();
                 endereco = enderecoRepository.findById(pedidoDTO.idEndereco()).orElseThrow();
                 pedido = new Pedido();
@@ -349,12 +348,11 @@ public class DataSeeder {
                 pedido.setCupom(pedidoDTO.idCupom() != null ? cupomRepository.findById(pedidoDTO.idCupom()).orElse(null) : null);
                 pedido.setEstado(pedidoDTO.estado());
                 pedido.setDesconto(pedidoDTO.desconto());
-                pedido.setDataPedido(pedidoDTO.dataPedido());
                 pedido.setValorTotal(pedidoDTO.valorTotal());
                 pedido.setValorFinal(pedidoDTO.valorFinal());
                 pedidoRepository.save(pedido);
 
-                pedidoDTO = new PedidoCreateDTO(2L,4L, null, "CONFIRMADO", null, LocalDateTime.now(), new BigDecimal("150.00"), new BigDecimal("150.00"));
+                pedidoDTO = new PedidoCreateDTO(2L,4L, null, "CONFIRMADO", null, new BigDecimal("150.00"), new BigDecimal("150.00"));
                 usuario = usuarioRepository.findById(pedidoDTO.idUsuario()).orElseThrow();
                 endereco = enderecoRepository.findById(pedidoDTO.idEndereco()).orElseThrow();
                 pedido = new Pedido();
@@ -363,12 +361,11 @@ public class DataSeeder {
                 pedido.setCupom(pedidoDTO.idCupom() != null ? cupomRepository.findById(pedidoDTO.idCupom()).orElse(null) : null);
                 pedido.setEstado(pedidoDTO.estado());
                 pedido.setDesconto(pedidoDTO.desconto());
-                pedido.setDataPedido(pedidoDTO.dataPedido());
                 pedido.setValorTotal(pedidoDTO.valorTotal());
                 pedido.setValorFinal(pedidoDTO.valorFinal());
                 pedidoRepository.save(pedido);
 
-                pedidoDTO = new PedidoCreateDTO(4L,4L, null, "ENVIADO", null, LocalDateTime.now(), new BigDecimal("300.00"), new BigDecimal("300.00"));
+                pedidoDTO = new PedidoCreateDTO(4L,4L, null, "ENVIADO", null, new BigDecimal("300.00"), new BigDecimal("300.00"));
                 usuario = usuarioRepository.findById(pedidoDTO.idUsuario()).orElseThrow();
                 endereco = enderecoRepository.findById(pedidoDTO.idEndereco()).orElseThrow();
                 pedido = new Pedido();
@@ -377,12 +374,11 @@ public class DataSeeder {
                 pedido.setCupom(pedidoDTO.idCupom() != null ? cupomRepository.findById(pedidoDTO.idCupom()).orElse(null) : null);
                 pedido.setEstado(pedidoDTO.estado());
                 pedido.setDesconto(pedidoDTO.desconto());
-                pedido.setDataPedido(pedidoDTO.dataPedido());
                 pedido.setValorTotal(pedidoDTO.valorTotal());
                 pedido.setValorFinal(pedidoDTO.valorFinal());
                 pedidoRepository.save(pedido);
 
-                pedidoDTO = new PedidoCreateDTO(5L,5L, null, "CANCELADO", null, LocalDateTime.now(), new BigDecimal("99.00"), new BigDecimal("99.00"));
+                pedidoDTO = new PedidoCreateDTO(5L,5L, null, "CANCELADO", null, new BigDecimal("99.00"), new BigDecimal("99.00"));
                 usuario = usuarioRepository.findById(pedidoDTO.idUsuario()).orElseThrow();
                 endereco = enderecoRepository.findById(pedidoDTO.idEndereco()).orElseThrow();
                 pedido = new Pedido();
@@ -391,7 +387,6 @@ public class DataSeeder {
                 pedido.setCupom(pedidoDTO.idCupom() != null ? cupomRepository.findById(pedidoDTO.idCupom()).orElse(null) : null);
                 pedido.setEstado(pedidoDTO.estado());
                 pedido.setDesconto(pedidoDTO.desconto());
-                pedido.setDataPedido(pedidoDTO.dataPedido());
                 pedido.setValorTotal(pedidoDTO.valorTotal());
                 pedido.setValorFinal(pedidoDTO.valorFinal());
                 pedidoRepository.save(pedido);

@@ -49,15 +49,16 @@ public class Pedido {
     private Pagamento pagamento;
 
     public Pedido(PedidoCreateDTO dto, Cupom cupom, Usuario usuario, Endereco endereco) {
+        LocalDateTime dataAtual = LocalDateTime.now();
         this.usuario = usuario;
         this.endereco = endereco;
         this.cupom = cupom;
         this.estado = dto.estado();
         this.desconto = dto.desconto();
-        this.dataPedido = dto.dataPedido();
+        this.dataPedido = dataAtual;
         this.valorTotal = dto.valorTotal();
         this.valorFinal = dto.valorFinal();
-        this.expresso = verificarPedidoExpresso(dto.dataPedido(), endereco);
+        this.expresso = verificarPedidoExpresso(dataAtual, endereco);
     }
 
     private boolean verificarPedidoExpresso(LocalDateTime data, Endereco endereco) {
