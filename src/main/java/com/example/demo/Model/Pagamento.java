@@ -1,5 +1,6 @@
 package com.example.demo.Model;
 
+import com.example.demo.DTO.Endereco.EnderecoCreateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,5 +37,13 @@ public class Pagamento {
 
     @Column(name = "data_pagamento", nullable = true)
     private LocalDateTime dataPagamento;
+
+    public Pagamento(Pedido pedido) {
+        this.pedido = pedido;
+        this.status = enumPagamento.PENDENTE;
+        this.valor = pedido.getValorFinal();
+        this.dataCriacao = LocalDateTime.now();
+        this.dataPagamento = null;
+    }
 }
 
