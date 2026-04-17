@@ -3,7 +3,6 @@ package com.example.demo.Service;
 import com.example.demo.DTO.Pagamento.PagamentoDTO;
 import com.example.demo.DTO.Pagamento.PagamentoUpdateDTO;
 import com.example.demo.DTO.Pedido.PedidoDTO;
-import com.example.demo.Model.Pedido;
 
 import java.util.List;
 
@@ -13,4 +12,5 @@ public interface PagamentoService {
     public PagamentoDTO save(PedidoDTO pedidoDTO);
     public PagamentoDTO update(Long id, PagamentoUpdateDTO pagamento);
     public void delete(Long id);
+    public PagamentoDTO buscarPorPedido(Long id);
 }

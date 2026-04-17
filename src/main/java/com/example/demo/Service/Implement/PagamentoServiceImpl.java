@@ -1,5 +1,6 @@
 package com.example.demo.Service.Implement;
 
+import com.example.demo.DTO.Endereco.EnderecoDTO;
 import com.example.demo.DTO.Pagamento.PagamentoDTO;
 import com.example.demo.DTO.Pagamento.PagamentoUpdateDTO;
 import com.example.demo.DTO.Pedido.PedidoDTO;
@@ -70,5 +71,11 @@ public class PagamentoServiceImpl implements PagamentoService {
     @Override
     public void delete(Long id) {
         pagamentoRepository.deleteById(id);
+    }
+
+    @Override
+    public PagamentoDTO buscarPorPedido(Long idPedido) {
+        Pagamento pagamento = pagamentoRepository.findByPedidoIdPedido(idPedido).orElseThrow(() -> new ResourceNotFoundException("Pagamento não encontrado"));
+        return new PagamentoDTO(pagamento);
     }
 }
