@@ -1,5 +1,7 @@
 package com.example.demo.Repository;
 
+import com.example.demo.Model.CEP;
+
 public interface CEPRepository {
-    public String retornarCEP(String cep);
+    public CEP retornarCEP(String cep);
 }
