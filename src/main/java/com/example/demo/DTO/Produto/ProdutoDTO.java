@@ -1,16 +1,24 @@
 package com.example.demo.DTO.Produto;
 
 import com.example.demo.Model.Produto;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public record ProdutoDTO (
+@Schema(description = "DTO de retorno do produto")
+public record ProdutoDTO(
+        @Schema(description = "ID do produto", example = "1")
         Long id,
+        @Schema(description = "Título do produto", example = "Café Arábica")
         String titulo,
+        @Schema(description = "Descrição", example = "Café 100% arábica, da variedade Catuaí 144, produzido na Chapada Diamantina...")
         String descricao,
+        @Schema(description = "Categoria", example = "CAFE")
         String categoria,
+        @Schema(description = "Imagens do produto")
         List<ImagemProdutoDTO> imagens,
+        @Schema(description = "Variantes do produto")
         List<VarianteDTO> variantes
 ) {
     public ProdutoDTO(Produto produto) {
