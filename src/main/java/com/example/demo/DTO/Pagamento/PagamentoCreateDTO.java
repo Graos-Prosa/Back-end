@@ -1,19 +1,18 @@
 package com.example.demo.DTO.Pagamento;
 
-import com.example.demo.Model.Pedido;
-import com.example.demo.Model.enumPagamento;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
-public record PagamentoCreateDTO  (
+@Schema(description = "DTO para criação de pagamento")
+public record PagamentoCreateDTO(
         @NotNull(message = "O Id do Pedido não pode ser nulo")
+        @Schema(description = "ID do pedido associado ao pagamento", example = "10")
         Long idPedido,
-        @NotNull(message = "O valor não pode ser nulo") @Min(value = 0, message = "O valor precisa ser maior ou igual a zero.")
+        @NotNull(message = "O valor não pode ser nulo")
+        @DecimalMin(value = "0.0", inclusive = true, message = "O valor precisa ser maior ou igual a zero.")
+        @Schema(description = "Valor do pagamento", example = "99.90")
         BigDecimal valor
 ) {}
