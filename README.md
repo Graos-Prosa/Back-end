@@ -18,6 +18,7 @@ Além disso, o projeto integra tecnologias modernas para tornar a aplicação ma
 - **RabbitMQ** para comunicação assíncrona entre serviços
 - **WebClient** para consumo de APIs externas (ViaCEP)
 - **Login social com Google**
+- **Swagger / OpenAPI** para documentação interativa da API
 - Estrutura preparada para futuras integrações com **PagBank** (pagamentos) e **Elasticsearch** (busca avançada)
 
 Outro ponto relevante é a preocupação com qualidade de código e boas práticas, incluindo:
@@ -37,6 +38,7 @@ Outro ponto relevante é a preocupação com qualidade de código e boas prátic
 - JWT (autenticação e autorização)
 - WebClient (integração com ViaCEP)
 - Google API (login social)
+- Swagger / OpenAPI (documentação)
 - Docker
 - Data Seed
 
@@ -150,6 +152,21 @@ Abaixo estão os principais endpoints disponíveis na aplicação.
 | GET        | /usuarios/{id}/pedidos       | Lista pedidos do usuário           |
 
 ---
+## 📄 Documentação da API (Swagger)
+
+A API possui documentação interativa utilizando **Swagger (OpenAPI)**.
+
+Com ela, é possível:
+- Visualizar todos os endpoints disponíveis
+- Testar requisições diretamente pelo navegador
+- Ver parâmetros, exemplos e respostas
+
+---
+
+### 🌐 Acesso ao Swagger
+
+- **Swagger UI**
+- **OpenAPI JSON**
 
 ## 🐳 Hosteamento e Configuração
 
@@ -174,11 +191,14 @@ A aplicação utiliza Docker para provisionar os serviços de banco de dados e m
 
 ### 🌐 Portas Utilizadas
 
-| Serviço    | Porta | Descrição                        |
-|------------|------|----------------------------------|
-| PostgreSQL | 5432 | Banco de dados                   |
-| RabbitMQ   | 5672 | Comunicação (mensageria)         |
-| RabbitMQ   | 15672| Painel de administração (Web UI) |
+| Serviço        | Porta | Descrição                        | Link de acesso ao rodar o projeto     |
+|----------------|-------|----------------------------------|---------------------------------------|
+| API            | 8080  | Sistema                          | http://localhost:8080                 |
+| PostgreSQL     | 5432  | Banco de dados                   | http://localhost:5432                 |
+| RabbitMQ       | 5672  | Comunicação (mensageria)         | http://localhost:5672                 |
+| RabbitMQ       | 15672 | Painel de administração (Web UI) | http://localhost:15672                |
+| Swagger (UI)   | 8080  | Painel de Documentação  (Web UI) | http://localhost:8080/swagger-ui.html |
+| OpenAPI (JSON) | 8080  | Painel de Documentação  (JSON)   | http://localhost:8080/v3/api-docs     |
 
 ---
 
@@ -236,13 +256,6 @@ Suba os containers do PostgreSQL e RabbitMQ via Docker.
 ### 🚀 Executando a Aplicação
 
 Inicie a aplicação Spring Boot normalmente via Maven ou pela sua IDE.
-
----
-
-### 🌐 Acessos
-
-- API: `http://localhost:8080`
-- RabbitMQ (painel): `http://localhost:15672`
 
 ---
 
